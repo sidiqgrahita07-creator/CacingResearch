@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Cacing Research</string>
+    <string name="tambah_pengamatan">Tambah Pengamatan</string>
+    <string name="daftar_pengamatan">Daftar Pengamatan</string>
+    <string name="jenis_cacing">Jenis Cacing</string>
+    <string name="jumlah_bibit">Jumlah Bibit</string>
+    <string name="kascing">Kascing (kg)</string>
+    <string name="pretreatment">Pretreatment Pakan</string>
+    <string name="simpan">Simpan</string>
+    <string name="batal">Batal</string>
+    <string name="foto">Foto</string>
+    <string name="jumlah_limbah">Jumlah Limbah Masuk (kg)</string>
+    <string name="tambah_foto">+ Tambah Foto</string>
+    <string name="ambil_foto">Ambil Foto</string>
+    <string name="pilih_galeri">Pilih dari Galeri</string>
+    <string name="catatan">Catatan</string>
+</resources>
