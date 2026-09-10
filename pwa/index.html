@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B2B4B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Cacing Research">
+<title>Cacing Research</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ══ OVERRIDES & CUSTOM ══ */
+  :root { --green:#2E7D5E; --green-bg:#EAF3DE; }
+
+  /* bottom nav */
+  .bot-nav{position:fixed;bottom:0;left:0;right:0;height:calc(52px + env(safe-area-inset-bottom));
+    background:var(--white);border-top:1px solid var(--cream3);display:flex;z-index:50;
+    padding-bottom:env(safe-area-inset-bottom);}
+  .bot-nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:3px;background:none;border:none;font-family:inherit;font-size:9px;font-weight:600;
+    color:var(--text3);cursor:pointer;transition:color .12s;text-transform:uppercase;letter-spacing:.05em;}
+  .bot-nav button svg{transition:stroke .12s;}
+  .bot-nav button.active{color:var(--navy);}
+  .bot-nav button.active svg{stroke:var(--navy);}
+  .app{padding-bottom:calc(52px + env(safe-area-inset-bottom) + 8px);}
+
+  /* FAB tambah */
+  .fab{position:fixed;bottom:calc(52px + env(safe-area-inset-bottom) + 14px);right:18px;
+    width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;
+    border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(27,43,75,.35);z-index:60;transition:transform .12s;}
+  .fab:active{transform:scale(.94);}
+
+  /* cards pengamatan */
+  .obs-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);
+    padding:14px;margin-bottom:10px;cursor:pointer;transition:box-shadow .12s;}
+  .obs-card:active{box-shadow:0 2px 8px rgba(0,0,0,.08);}
+  .obs-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .obs-badge{font-size:10px;font-weight:700;background:var(--navy);color:#fff;
+    border-radius:20px;padding:3px 10px;letter-spacing:.03em;}
+  .obs-date{font-size:10px;color:var(--text3);}
+  .obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+  .obs-item{background:var(--cream);border-radius:var(--r-sm);padding:7px 9px;}
+  .obs-item-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;}
+  .obs-item-val{font-size:13px;font-weight:600;color:var(--text1);margin-top:1px;}
+  .obs-notes{margin-top:8px;font-size:12px;color:var(--text2);line-height:1.5;
+    background:var(--cream);border-radius:var(--r-sm);padding:8px 9px;}
+  .obs-photos{display:flex;gap:6px;margin-top:8px;overflow-x:auto;}
+  .obs-photo{width:64px;height:64px;object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;}
+  .obs-del{background:none;border:none;color:var(--danger);font-size:11px;font-weight:700;
+    cursor:pointer;padding:4px 0;font-family:inherit;margin-top:8px;display:block;}
+
+  /* modal / sheet */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;
+    display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s;}
+  .modal-overlay.open{opacity:1;pointer-events:all;}
+  .modal-sheet{background:var(--white);border-radius:20px 20px 0 0;width:100%;
+    max-height:92vh;overflow-y:auto;padding:0 0 calc(24px + env(safe-area-inset-bottom));
+    transform:translateY(40px);transition:transform .22s;padding-top:0;}
+  .modal-overlay.open .modal-sheet{transform:translateY(0);}
+  .modal-head{position:sticky;top:0;background:var(--white);padding:16px 16px 10px;
+    border-bottom:1px solid var(--cream3);display:flex;align-items:center;justify-content:space-between;z-index:2;}
+  .modal-title{font-size:16px;font-weight:700;color:var(--navy);}
+  .modal-close{background:none;border:none;font-size:22px;color:var(--text3);cursor:pointer;
+    width:34px;height:34px;display:flex;align-items:center;justify-content:center;
+    border-radius:50%;}
+  .modal-body{padding:14px 16px;}
+
+  /* foto picker */
+  .photo-strip{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-top:4px;}
+  .photo-thumb{position:relative;width:72px;height:72px;flex-shrink:0;}
+  .photo-thumb img{width:72px;height:72px;object-fit:cover;border-radius:var(--r-sm);}
+  .photo-thumb .rm{position:absolute;top:-6px;right:-6px;width:20px;height:20px;
+    background:var(--danger);color:#fff;border:none;border-radius:50%;font-size:13px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+  .photo-add{width:72px;height:72px;flex-shrink:0;border:2px dashed var(--cream3);
+    border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;
+    font-size:26px;color:var(--text3);cursor:pointer;background:var(--cream);}
+
+  /* stats */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .stat-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;}
+  .stat-num{font-size:28px;font-weight:700;color:var(--navy);}
+  .stat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+  .stat-card.wide{grid-column:span 2;}
+
+  /* sync status */
+  .sync-bar{font-size:11px;font-weight:600;padding:8px 14px;border-radius:var(--r-sm);
+    margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+  .sync-bar.ok{background:var(--success-bg);color:var(--success-tx);}
+  .sync-bar.err{background:var(--warn-bg);color:var(--warn-tx);}
+  .sync-bar.loading{background:var(--cream2);color:var(--text2);}
+
+  /* config screen */
+  .config-hint{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;
+    background:var(--cream);border-radius:var(--r-md);padding:12px;}
+  .config-hint code{font-size:11px;background:var(--cream2);padding:1px 5px;border-radius:3px;color:var(--warn);}
+  .spinner-sm{width:14px;height:14px;border:2px solid currentColor;border-top-color:transparent;
+    border-radius:50%;display:inline-block;animation:spin .6s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* empty state */
+  .empty{text-align:center;padding:48px 24px;color:var(--text3);}
+  .empty svg{margin:0 auto 12px;display:block;opacity:.35;}
+  .empty p{font-size:13px;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div style="font-size:22px;line-height:1;">🪱</div>
+    <div class="h-titles">
+      <h1>Cacing Research</h1>
+      <span class="h-sub" id="nav-current">Pengamatan</span>
+    </div>
+    <button class="h-right" id="btn-config" style="cursor:pointer;border:none;background:var(--cream2);color:var(--steel);" title="Pengaturan">⚙️ Config</button>
+  </header>
+
+  <!-- ══ MAIN CONTENT ══ -->
+  <main class="content">
+
+    <!-- VIEW: PENGAMATAN LIST -->
+    <div class="view active" id="view-list">
+      <div id="sync-status"></div>
+      <div id="obs-list"></div>
+    </div>
+
+    <!-- VIEW: STATISTIK -->
+    <div class="view" id="view-stats">
+      <div class="section-lbl">Ringkasan</div>
+      <div class="stat-grid" id="stat-grid">
+        <div class="stat-card"><div class="stat-num" id="s-total">-</div><div class="stat-lbl">Total Pengamatan</div></div>
+        <div class="stat-card"><div class="stat-num" id="s-limbah">-</div><div class="stat-lbl">Total Limbah (kg)</div></div>
+        <div class="stat-card wide" id="s-jenis-card">
+          <div class="stat-lbl" style="margin-bottom:8px;">Per Jenis Cacing</div>
+          <div id="s-jenis"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW: CONFIG -->
+    <div class="view" id="view-config">
+      <div class="form-card">
+        <div class="config-hint">
+          🔧 <strong>Setup Google Sheets</strong><br><br>
+          1. Buka <a href="https://sheets.google.com" target="_blank" style="color:var(--steel);font-weight:600;">sheets.google.com</a> → buat spreadsheet baru<br>
+          2. <strong>Extensions → Apps Script</strong> → paste kode dari <code>google-apps-script/Code.gs</code><br>
+          3. Ganti <code>SPREADSHEET_ID</code> dengan ID spreadsheet kamu<br>
+          4. Run <code>setupSheet()</code> → Deploy sebagai Web App<br>
+          5. Paste URL di bawah
+        </div>
+        <div class="field">
+          <label>URL Apps Script Web App <span class="req">*</span></label>
+          <input type="url" id="cfg-url" placeholder="https://script.google.com/macros/s/.../exec">
+        </div>
+        <div class="field">
+          <label>Nama Peneliti</label>
+          <input type="text" id="cfg-nama" placeholder="Nama kamu">
+        </div>
+        <button class="btn btn-primary btn-block" id="btn-save-config">Simpan Config</button>
+        <div id="cfg-test-result" style="margin-top:10px;font-size:12px;"></div>
+      </div>
+      <button class="btn btn-block" id="btn-test-conn" style="background:var(--cream2);color:var(--navy);margin-top:4px;">🔗 Test Koneksi Sheets</button>
+    </div>
+
+  </main>
+
+  <!-- ══ BOTTOM NAV ══ -->
+  <nav class="bot-nav">
+    <button class="active" data-view="view-list" id="nav-list">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      Pengamatan
+    </button>
+    <button data-view="view-stats" id="nav-stats">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      Statistik
+    </button>
+  </nav>
+
+  <!-- FAB Tambah -->
+  <button class="fab" id="fab-add" title="Tambah Pengamatan">+</button>
+</div>
+
+<!-- ══ MODAL: TAMBAH PENGAMATAN ══ -->
+<div class="modal-overlay" id="modal-tambah">
+  <div class="modal-sheet">
+    <div class="modal-head">
+      <span class="modal-title">Pengamatan Baru</span>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="section-lbl">Identifikasi</div>
+      <div class="form-card">
+        <div class="field">
+          <label>Jenis Cacing <span class="req">*</span></label>
+          <select id="f-jenis">
+            <option value="">— pilih —</option>
+            <option value="ANC">ANC (African Night Crawler)</option>
+            <option value="BSF">BSF (Black Soldier Fly)</option>
+            <option value="Lumbricus">Lumbricus Rubellus</option>
+            <option value="Eisenia">Eisenia Fetida (Red Worm)</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+        <div class="field" id="field-jenis-lain" style="display:none;">
+          <label>Jenis Lainnya</label>
+          <input type="text" id="f-jenis-lain" placeholder="Tulis jenis cacing...">
+        </div>
+      </div>
+
+      <div class="section-lbl">Data Pengamatan</div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field">
+            <label>Jumlah Bibit</label>
+            <input type="text" id="f-bibit" placeholder="cth: 1000 ekor">
+          </div>
+          <div class="field">
+            <label>Kascing (kg)</label>
+            <input type="number" id="f-kascing" placeholder="0.0" step="0.1" min="0">
+          </div>
+        </div>
+        <div class="field">
+          <label>Jumlah Limbah Masuk (kg)</label>
+          <input type="number" id="f-limbah" placeholder="0.0" step="0.1" min="0">
+        </div>
+        <div class="field">
+          <label>Pretreatment Pakan</label>
+          <select id="f-pretreatment">
+            <option value="">— tidak ada —</option>
+            <option value="Fermentasi">Fermentasi</option>
+            <option value="Pengomposan">Pengomposan</option>
+            <option value="Blanching">Blanching</option>
+            <option value="Cacah">Dicacah/Diblender</option>
+            <option value="Campuran">Campuran</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+        <div class="field" id="field-treat-lain" style="display:none;">
+          <label>Detail Pretreatment</label>
+          <input type="text" id="f-treat-lain" placeholder="Jelaskan pretreatment...">
+        </div>
+      </div>
+
+      <div class="section-lbl">Catatan Harian</div>
+      <div class="form-card">
+        <div class="field">
+          <label>Catatan Pengamatan</label>
+          <textarea id="f-catatan" rows="3" placeholder="Kondisi cacing, pertumbuhan, anomali..."></textarea>
+        </div>
+      </div>
+
+      <div class="section-lbl">Foto Dokumentasi</div>
+      <div class="form-card">
+        <div class="photo-strip" id="photo-strip">
+          <div class="photo-add" id="photo-add-btn">📷</div>
+        </div>
+        <input type="file" id="photo-input" accept="image/*" multiple style="display:none;">
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">Tap 📷 untuk ambil foto atau pilih dari galeri</div>
+      </div>
+
+      <div id="form-status" style="margin-bottom:10px;"></div>
+      <button class="btn btn-primary btn-block" id="btn-simpan" style="margin-top:4px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Simpan Pengamatan
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="toast-ic" id="toast-ic">✓</span><span id="toast-msg"></span></div>
+
+<script src="app.js"></script>
+</body>
+</html>
