@@ -9,7 +9,6 @@
 <meta name="apple-mobile-web-app-title" content="Cacing Research">
 <title>Cacing Research</title>
 <link rel="manifest" href="manifest.json">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
@@ -20,28 +19,29 @@
   --white:#FFFFFF;
   --text1:#1B2B4B;--text2:#4A6080;--text3:#8098B0;
   --success:#2E7D5E;--success-bg:#EAF3DE;--success-tx:#27500A;
-  --danger:#8B2E2E;--warn-bg:#FAEEDA;--warn-tx:#854F0B;--warn:#BA7517;
+  --danger:#8B2E2E;--warn-bg:#FAEEDA;--warn-tx:#854F0B;
   --r-sm:6px;--r-md:10px;--r-lg:14px;
   --header-h:54px;
 }
 html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text1);-webkit-text-size-adjust:100%;overscroll-behavior-y:none;}
 body{display:flex;flex-direction:column;min-height:100vh;}
-
-/* ══ APP SHELL ══ */
 .app{display:flex;flex-direction:column;min-height:100vh;padding-bottom:calc(60px + env(safe-area-inset-bottom));}
 
-/* ══ HEADER ══ */
-header{height:var(--header-h);background:var(--white);display:flex;align-items:center;gap:9px;
-  padding:0 16px;position:sticky;top:0;z-index:40;color:var(--navy);flex-shrink:0;
-  border-bottom:1px solid var(--cream3);
+/* HEADER */
+header{background:var(--white);display:flex;align-items:center;gap:9px;padding:0 16px;
+  position:sticky;top:0;z-index:40;border-bottom:1px solid var(--cream3);flex-shrink:0;
   padding-top:env(safe-area-inset-top);height:calc(var(--header-h) + env(safe-area-inset-top));}
-header h1{font-size:14px;font-weight:600;letter-spacing:.01em;color:var(--navy);}
-header .h-titles{display:flex;flex-direction:column;line-height:1.1;}
+.h-back{background:none;border:none;color:var(--steel);cursor:pointer;font-size:22px;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;margin-left:-6px;display:none;}
+header h1{font-size:14px;font-weight:600;color:var(--navy);}
 header .h-sub{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-top:2px;}
-header .h-right{margin-left:auto;font-size:10px;font-weight:600;color:var(--steel);background:var(--cream2);
-  padding:4px 10px;border-radius:20px;border:none;cursor:pointer;font-family:inherit;}
+header .h-titles{display:flex;flex-direction:column;line-height:1.1;flex:1;}
+.h-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-left:auto;border:none;cursor:pointer;font-family:inherit;}
+.h-badge.aktif{background:var(--success-bg);color:var(--success-tx);}
+.h-badge.selesai{background:var(--cream2);color:var(--text3);}
+.h-right{margin-left:auto;font-size:10px;font-weight:600;color:var(--steel);background:var(--cream2);padding:4px 10px;border-radius:20px;border:none;cursor:pointer;font-family:inherit;}
 
-/* ══ CONTENT ══ */
+/* CONTENT */
 .content{flex:1;padding:14px;max-width:920px;width:100%;margin:0 auto;}
 .view{display:none;}.view.active{display:block;animation:fade .18s ease;}
 @keyframes fade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
@@ -49,11 +49,11 @@ header .h-right{margin-left:auto;font-size:10px;font-weight:600;color:var(--stee
   font-weight:600;margin:16px 2px 8px;display:flex;align-items:center;gap:7px;}
 .section-lbl::after{content:'';flex:1;height:1px;background:var(--cream3);}
 
-/* ══ FORM ══ */
+/* FORM */
 .form-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;margin-bottom:12px;}
 .field{margin-bottom:13px;}.field:last-child{margin-bottom:0;}
 .field>label{display:block;font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;}
-.field .req{color:var(--danger);margin-left:2px;}
+.field .req{color:var(--danger);}
 input,select,textarea{width:100%;font-family:inherit;font-size:14px;color:var(--text1);
   background:var(--cream);border:1px solid var(--cream3);border-radius:var(--r-sm);
   padding:10px 11px;outline:none;transition:border-color .12s,background .12s;}
@@ -63,47 +63,98 @@ select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns=
 textarea{resize:vertical;min-height:62px;}
 .field-row{display:flex;gap:9px;}.field-row>.field{flex:1;}
 
-/* ══ BUTTONS ══ */
+/* BUTTONS */
 .btn{padding:12px 16px;border-radius:var(--r-md);font-size:14px;font-weight:600;cursor:pointer;
   border:none;font-family:inherit;transition:all .12s;display:inline-flex;align-items:center;justify-content:center;gap:7px;}
 .btn:active{transform:scale(.98);}
-.btn-primary{background:var(--navy);color:#fff;}.btn-primary:active{background:var(--navy2);}
+.btn-primary{background:var(--navy);color:#fff;}
+.btn-danger{background:transparent;color:var(--danger);border:1px solid rgba(139,46,46,.2);}
+.btn-ghost{background:var(--cream2);color:var(--text2);}
 .btn-block{width:100%;}
 .btn:disabled{opacity:.5;cursor:not-allowed;}
+.btn-sm{padding:7px 12px;font-size:12px;}
 
-/* ══ BOTTOM NAV ══ */
+/* BOTTOM NAV */
 .bot-nav{position:fixed;bottom:0;left:0;right:0;height:calc(52px + env(safe-area-inset-bottom));
-  background:var(--white);border-top:1px solid var(--cream3);display:flex;z-index:50;
-  padding-bottom:env(safe-area-inset-bottom);}
+  background:var(--white);border-top:1px solid var(--cream3);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom);}
 .bot-nav button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:3px;background:none;border:none;font-family:inherit;font-size:9px;font-weight:600;
   color:var(--text3);cursor:pointer;transition:color .12s;text-transform:uppercase;letter-spacing:.05em;}
 .bot-nav button.active{color:var(--navy);}
 
-/* ══ FAB ══ */
+/* FAB */
 .fab{position:fixed;bottom:calc(52px + env(safe-area-inset-bottom) + 14px);right:18px;
   width:52px;height:52px;border-radius:50%;background:var(--navy);color:#fff;
   border:none;font-size:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 16px rgba(27,43,75,.35);z-index:60;transition:transform .12s;}
+  box-shadow:0 4px 16px rgba(27,43,75,.35);z-index:60;transition:transform .12s,opacity .2s;}
 .fab:active{transform:scale(.94);}
+.fab.hidden{opacity:0;pointer-events:none;}
 
-/* ══ CARDS PENGAMATAN ══ */
-.obs-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;margin-bottom:10px;}
-.obs-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
-.obs-badge{font-size:10px;font-weight:700;background:var(--navy);color:#fff;border-radius:20px;padding:3px 10px;}
-.obs-date{font-size:10px;color:var(--text3);}
-.obs-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.obs-item{background:var(--cream);border-radius:var(--r-sm);padding:7px 9px;}
-.obs-item-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;}
-.obs-item-val{font-size:13px;font-weight:600;color:var(--text1);margin-top:1px;}
-.obs-notes{margin-top:8px;font-size:12px;color:var(--text2);line-height:1.5;background:var(--cream);border-radius:var(--r-sm);padding:8px 9px;}
-.obs-photos{display:flex;gap:6px;margin-top:8px;overflow-x:auto;}
-.obs-photo{width:64px;height:64px;object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;}
-.obs-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
-.obs-sync{font-size:10px;color:var(--text3);}
-.obs-del{background:none;border:none;color:var(--danger);font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;padding:4px;}
+/* RESEARCH CARD (home) */
+.res-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);
+  padding:14px;margin-bottom:10px;cursor:pointer;transition:box-shadow .12s;
+  border-left:4px solid var(--steel);}
+.res-card.selesai{border-left-color:var(--cream3);}
+.res-card:active{box-shadow:0 2px 12px rgba(27,43,75,.1);}
+.res-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:10px;}
+.res-nama{font-size:15px;font-weight:700;color:var(--navy);}
+.res-jenis{font-size:10px;font-weight:700;background:var(--navy);color:#fff;border-radius:20px;padding:3px 10px;white-space:nowrap;}
+.res-jenis.selesai{background:var(--cream3);color:var(--text3);}
+.res-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.res-item{background:var(--cream);border-radius:var(--r-sm);padding:6px 8px;}
+.res-item-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;}
+.res-item-val{font-size:12px;font-weight:600;color:var(--text1);margin-top:1px;}
+.res-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;}
+.res-days{font-size:11px;color:var(--steel);font-weight:600;}
+.res-date{font-size:10px;color:var(--text3);}
 
-/* ══ MODAL / BOTTOM SHEET ══ */
+/* LOG HARIAN (detail view) */
+.log-timeline{position:relative;padding-left:24px;}
+.log-timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:var(--cream3);}
+.log-item{position:relative;margin-bottom:16px;}
+.log-item::before{content:'';position:absolute;left:-20px;top:14px;width:10px;height:10px;
+  border-radius:50%;background:var(--steel);border:2px solid var(--white);box-shadow:0 0 0 2px var(--steel3);}
+.log-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:12px;}
+.log-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.log-hari{font-size:11px;font-weight:700;color:var(--navy);}
+.log-date{font-size:10px;color:var(--text3);}
+.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px;}
+.log-item-box{background:var(--cream);border-radius:var(--r-sm);padding:6px 8px;}
+.log-item-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;}
+.log-item-val{font-size:13px;font-weight:600;color:var(--text1);margin-top:1px;}
+.log-notes{font-size:12px;color:var(--text2);background:var(--cream);border-radius:var(--r-sm);padding:8px;line-height:1.5;}
+.log-photos{display:flex;gap:6px;margin-top:8px;overflow-x:auto;}
+.log-photo{width:60px;height:60px;object-fit:cover;border-radius:var(--r-sm);flex-shrink:0;}
+.log-del{background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;margin-top:6px;font-family:inherit;padding:0;}
+.log-del:hover{color:var(--danger);}
+
+/* DETAIL HEADER INFO */
+.detail-info{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;margin-bottom:14px;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.detail-item{background:var(--cream);border-radius:var(--r-sm);padding:8px 10px;}
+.detail-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;}
+.detail-val{font-size:13px;font-weight:600;color:var(--text1);margin-top:2px;}
+.detail-actions{display:flex;gap:8px;margin-top:10px;}
+
+/* STATISTIK */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.stat-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;}
+.stat-card.wide{grid-column:span 2;}
+.stat-num{font-size:28px;font-weight:700;color:var(--navy);}
+.stat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+
+/* SYNC BAR */
+.sync-bar{font-size:11px;font-weight:600;padding:8px 12px;border-radius:var(--r-sm);margin-bottom:12px;display:flex;align-items:center;gap:7px;}
+.sync-bar.ok{background:var(--success-bg);color:var(--success-tx);}
+.sync-bar.err{background:var(--warn-bg);color:var(--warn-tx);}
+.sync-bar a{color:inherit;font-weight:700;}
+
+/* CONFIG */
+.config-hint{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px;background:var(--cream);border-radius:var(--r-md);padding:12px;}
+.config-hint code{font-size:11px;background:var(--cream2);padding:1px 5px;border-radius:3px;color:#BA7517;}
+.config-hint a{color:var(--steel);font-weight:600;}
+
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;
   display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .2s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
@@ -113,42 +164,22 @@ textarea{resize:vertical;min-height:62px;}
 .modal-head{position:sticky;top:0;background:var(--white);padding:16px 16px 12px;
   border-bottom:1px solid var(--cream3);display:flex;align-items:center;justify-content:space-between;z-index:2;}
 .modal-title{font-size:16px;font-weight:700;color:var(--navy);}
-.modal-close{background:none;border:none;font-size:22px;color:var(--text3);cursor:pointer;width:34px;height:34px;
-  display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.modal-close{background:none;border:none;font-size:22px;color:var(--text3);cursor:pointer;
+  width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:50%;}
 .modal-body{padding:14px 16px;padding-bottom:32px;}
 
-/* ══ FOTO PICKER ══ */
+/* FOTO */
 .photo-strip{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-top:4px;}
 .photo-thumb{position:relative;width:72px;height:72px;flex-shrink:0;}
 .photo-thumb img{width:72px;height:72px;object-fit:cover;border-radius:var(--r-sm);}
 .photo-thumb .rm{position:absolute;top:-6px;right:-6px;width:20px;height:20px;
-  background:var(--danger);color:#fff;border:none;border-radius:50%;font-size:13px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+  background:var(--danger);color:#fff;border:none;border-radius:50%;font-size:13px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;}
 .photo-add{width:72px;height:72px;flex-shrink:0;border:2px dashed var(--cream3);
   border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;
   font-size:26px;color:var(--text3);cursor:pointer;background:var(--cream);}
 
-/* ══ STATISTIK ══ */
-.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.stat-card{background:var(--white);border:1px solid var(--cream3);border-radius:var(--r-lg);padding:14px;}
-.stat-card.wide{grid-column:span 2;}
-.stat-num{font-size:28px;font-weight:700;color:var(--navy);}
-.stat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
-.jenis-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--cream3);font-size:13px;}
-.jenis-row:last-child{border-bottom:none;}
-
-/* ══ SYNC STATUS ══ */
-.sync-bar{font-size:11px;font-weight:600;padding:8px 12px;border-radius:var(--r-sm);margin-bottom:12px;display:flex;align-items:center;gap:7px;}
-.sync-bar.ok{background:var(--success-bg);color:var(--success-tx);}
-.sync-bar.err{background:var(--warn-bg);color:var(--warn-tx);}
-.sync-bar a{color:inherit;font-weight:700;}
-
-/* ══ CONFIG ══ */
-.config-hint{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px;background:var(--cream);border-radius:var(--r-md);padding:12px;}
-.config-hint code{font-size:11px;background:var(--cream2);padding:1px 5px;border-radius:3px;color:var(--warn);}
-.config-hint a{color:var(--steel);font-weight:600;}
-
-/* ══ TOAST ══ */
+/* TOAST */
 .toast{position:fixed;bottom:calc(60px + 14px);left:50%;transform:translateX(-50%) translateY(20px);
   background:var(--navy);color:#fff;padding:12px 18px;border-radius:var(--r-md);font-size:13px;font-weight:500;
   box-shadow:0 6px 22px rgba(27,43,75,.35);z-index:300;display:flex;align-items:center;gap:9px;
@@ -157,15 +188,11 @@ textarea{resize:vertical;min-height:62px;}
 .toast.err{background:var(--danger);}
 .toast-ic{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;}
 
-/* ══ MISC ══ */
+/* MISC */
 .empty{text-align:center;padding:48px 24px;color:var(--text3);}
 .empty p{font-size:13px;line-height:1.6;margin-top:10px;}
 .spinner-sm{width:14px;height:14px;border:2px solid currentColor;border-top-color:transparent;border-radius:50%;display:inline-block;animation:spin .6s linear infinite;}
 @keyframes spin{to{transform:rotate(360deg);}}
-.test-result{margin-top:10px;font-size:12px;}
-.test-ok{background:var(--success-bg);color:var(--success-tx);padding:8px 12px;border-radius:var(--r-sm);}
-.test-err{background:var(--warn-bg);color:var(--warn-tx);padding:8px 12px;border-radius:var(--r-sm);}
-
 @media(min-width:560px){.content{padding:22px;}}
 </style>
 </head>
@@ -175,33 +202,39 @@ textarea{resize:vertical;min-height:62px;}
 
   <!-- HEADER -->
   <header>
-    <div style="font-size:22px;">🪱</div>
+    <button class="h-back" id="h-back">‹</button>
     <div class="h-titles">
-      <h1>Cacing Research</h1>
-      <span class="h-sub" id="nav-current">Pengamatan</span>
+      <h1 id="h-title">Cacing Research</h1>
+      <span class="h-sub" id="h-sub">Daftar Research</span>
     </div>
-    <button class="h-right" id="btn-config">⚙️ Config</button>
+    <button class="h-right" id="btn-config">⚙️</button>
   </header>
 
   <main class="content">
 
-    <!-- VIEW: LIST -->
-    <div class="view active" id="view-list">
+    <!-- VIEW: HOME (daftar research) -->
+    <div class="view active" id="view-home">
       <div id="sync-status"></div>
-      <div id="obs-list"></div>
+      <div id="res-list"></div>
+    </div>
+
+    <!-- VIEW: DETAIL RESEARCH -->
+    <div class="view" id="view-detail">
+      <div id="detail-info"></div>
+      <div class="section-lbl">Log Pengamatan Harian</div>
+      <div class="log-timeline" id="log-list"></div>
     </div>
 
     <!-- VIEW: STATISTIK -->
     <div class="view" id="view-stats">
       <div class="section-lbl">Ringkasan</div>
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-num" id="s-total">-</div><div class="stat-lbl">Total Pengamatan</div></div>
-        <div class="stat-card"><div class="stat-num" id="s-limbah">-</div><div class="stat-lbl">Total Limbah (kg)</div></div>
-        <div class="stat-card wide">
-          <div class="stat-lbl" style="margin-bottom:10px;">Per Jenis Cacing</div>
-          <div id="s-jenis"></div>
-        </div>
+        <div class="stat-card"><div class="stat-num" id="s-total">-</div><div class="stat-lbl">Total Research</div></div>
+        <div class="stat-card"><div class="stat-num" id="s-aktif">-</div><div class="stat-lbl">Sedang Aktif</div></div>
+        <div class="stat-card wide"><div class="stat-num" id="s-hari">-</div><div class="stat-lbl">Total Hari Pengamatan</div></div>
       </div>
+      <div class="section-lbl">Per Jenis Cacing</div>
+      <div class="form-card" id="s-jenis"></div>
     </div>
 
     <!-- VIEW: CONFIG -->
@@ -215,7 +248,7 @@ textarea{resize:vertical;min-height:62px;}
           4. Paste URL di bawah
         </div>
         <div class="field">
-          <label>URL Apps Script Web App <span class="req">*</span></label>
+          <label>URL Apps Script <span class="req">*</span></label>
           <input type="url" id="cfg-url" placeholder="https://script.google.com/macros/s/.../exec">
         </div>
         <div class="field">
@@ -223,18 +256,18 @@ textarea{resize:vertical;min-height:62px;}
           <input type="text" id="cfg-nama" placeholder="Nama kamu">
         </div>
         <button class="btn btn-primary btn-block" id="btn-save-config">💾 Simpan Config</button>
-        <div id="cfg-test-result" class="test-result"></div>
+        <div id="cfg-test-result" style="margin-top:10px;font-size:12px;"></div>
       </div>
-      <button class="btn btn-block" id="btn-test-conn" style="background:var(--cream2);color:var(--navy);margin-top:8px;">🔗 Test Koneksi Sheets</button>
+      <button class="btn btn-ghost btn-block" id="btn-test-conn" style="margin-top:8px;">🔗 Test Koneksi</button>
     </div>
 
   </main>
 
   <!-- BOTTOM NAV -->
-  <nav class="bot-nav">
-    <button class="active" data-view="view-list" id="nav-list">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-      Pengamatan
+  <nav class="bot-nav" id="bot-nav">
+    <button class="active" data-view="view-home" id="nav-home">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Home
     </button>
     <button data-view="view-stats" id="nav-stats">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -243,23 +276,26 @@ textarea{resize:vertical;min-height:62px;}
   </nav>
 
   <!-- FAB -->
-  <button class="fab" id="fab-add">+</button>
+  <button class="fab" id="fab">+</button>
 </div>
 
-<!-- MODAL TAMBAH PENGAMATAN -->
-<div class="modal-overlay" id="modal-tambah">
+<!-- MODAL: RESEARCH BARU -->
+<div class="modal-overlay" id="modal-research">
   <div class="modal-sheet">
     <div class="modal-head">
-      <span class="modal-title">Pengamatan Baru</span>
-      <button class="modal-close" id="modal-close">✕</button>
+      <span class="modal-title">Research Baru</span>
+      <button class="modal-close" data-modal="modal-research">✕</button>
     </div>
     <div class="modal-body">
-
-      <div class="section-lbl">Identifikasi</div>
+      <div class="section-lbl">Identitas Research</div>
       <div class="form-card">
         <div class="field">
+          <label>Nama Research <span class="req">*</span></label>
+          <input type="text" id="r-nama" placeholder="cth: Batch ANC September 2026">
+        </div>
+        <div class="field">
           <label>Jenis Cacing <span class="req">*</span></label>
-          <select id="f-jenis">
+          <select id="r-jenis">
             <option value="">— pilih —</option>
             <option>ANC (African Night Crawler)</option>
             <option>BSF (Black Soldier Fly)</option>
@@ -268,31 +304,26 @@ textarea{resize:vertical;min-height:62px;}
             <option value="Lainnya">Lainnya...</option>
           </select>
         </div>
-        <div class="field" id="field-jenis-lain" style="display:none;">
+        <div class="field" id="r-field-jenis-lain" style="display:none;">
           <label>Tulis Jenis Cacing</label>
-          <input type="text" id="f-jenis-lain" placeholder="Jenis cacing...">
+          <input type="text" id="r-jenis-lain" placeholder="Jenis cacing...">
         </div>
       </div>
-
-      <div class="section-lbl">Data Pengamatan</div>
+      <div class="section-lbl">Setup Awal</div>
       <div class="form-card">
         <div class="field-row">
           <div class="field">
             <label>Jumlah Bibit</label>
-            <input type="text" id="f-bibit" placeholder="cth: 1000 ekor">
+            <input type="text" id="r-bibit" placeholder="cth: 1000 ekor">
           </div>
           <div class="field">
             <label>Kascing (kg)</label>
-            <input type="number" id="f-kascing" placeholder="0.0" step="0.1" min="0">
+            <input type="number" id="r-kascing" placeholder="0.0" step="0.1" min="0">
           </div>
         </div>
         <div class="field">
-          <label>Jumlah Limbah Masuk (kg)</label>
-          <input type="number" id="f-limbah" placeholder="0.0" step="0.1" min="0">
-        </div>
-        <div class="field">
           <label>Pretreatment Pakan</label>
-          <select id="f-pretreatment">
+          <select id="r-pretreatment">
             <option value="">— tidak ada —</option>
             <option>Fermentasi</option>
             <option>Pengomposan</option>
@@ -302,35 +333,44 @@ textarea{resize:vertical;min-height:62px;}
             <option value="Lainnya">Lainnya...</option>
           </select>
         </div>
-        <div class="field" id="field-treat-lain" style="display:none;">
+        <div class="field" id="r-field-treat-lain" style="display:none;">
           <label>Detail Pretreatment</label>
-          <input type="text" id="f-treat-lain" placeholder="Jelaskan pretreatment...">
+          <input type="text" id="r-treat-lain" placeholder="Jelaskan...">
         </div>
       </div>
+      <button class="btn btn-primary btn-block" id="btn-simpan-research">🪱 Mulai Research</button>
+    </div>
+  </div>
+</div>
 
-      <div class="section-lbl">Catatan Harian</div>
+<!-- MODAL: PENGAMATAN HARIAN -->
+<div class="modal-overlay" id="modal-log">
+  <div class="modal-sheet">
+    <div class="modal-head">
+      <span class="modal-title" id="modal-log-title">Pengamatan Hari ke-?</span>
+      <button class="modal-close" data-modal="modal-log">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="section-lbl">Data Hari Ini</div>
       <div class="form-card">
         <div class="field">
+          <label>Jumlah Limbah Masuk (kg)</label>
+          <input type="number" id="l-limbah" placeholder="0.0" step="0.1" min="0">
+        </div>
+        <div class="field">
           <label>Catatan Pengamatan</label>
-          <textarea id="f-catatan" rows="3" placeholder="Kondisi cacing, pertumbuhan, anomali..."></textarea>
+          <textarea id="l-catatan" rows="3" placeholder="Kondisi cacing, pertumbuhan, anomali, suhu..."></textarea>
         </div>
       </div>
-
       <div class="section-lbl">Foto Dokumentasi</div>
       <div class="form-card">
-        <div class="photo-strip" id="photo-strip">
-          <div class="photo-add" id="photo-add-btn">📷</div>
+        <div class="photo-strip" id="log-photo-strip">
+          <div class="photo-add" id="log-photo-add">📷</div>
         </div>
-        <input type="file" id="photo-input" accept="image/*" multiple style="display:none;">
-        <p style="font-size:10px;color:var(--text3);margin-top:6px;">Tap 📷 untuk ambil foto atau pilih dari galeri</p>
+        <input type="file" id="log-photo-input" accept="image/*" multiple style="display:none;">
+        <p style="font-size:10px;color:var(--text3);margin-top:6px;">Tap 📷 untuk foto / pilih galeri</p>
       </div>
-
-      <div id="form-status" style="margin-bottom:8px;font-size:12px;color:var(--text2);"></div>
-      <button class="btn btn-primary btn-block" id="btn-simpan">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Simpan Pengamatan
-      </button>
-
+      <button class="btn btn-primary btn-block" id="btn-simpan-log">✓ Simpan Pengamatan</button>
     </div>
   </div>
 </div>
