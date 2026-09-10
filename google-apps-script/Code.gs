@@ -1,6 +1,6 @@
 // Google Apps Script - Deploy sebagai Web App
 // URL Spreadsheet: ganti dengan ID spreadsheet kamu
-const SPREADSHEET_ID = 'GANTI_DENGAN_ID_SPREADSHEET_KAMU';
+const SPREADSHEET_ID = '1P924bH-iwOSimCRj5bbJA_QFpKGf9WhEuDZyxtXEbhU';
 
 function doPost(e) {
   try {

@@ -3,2365 +3,686 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analisa & SOP Budidaya Cacing — InsTech</title>
+<title>Cacing Garudafood — InsTech</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+:root {
+  --g950:#052e16;--g900:#14532d;--g800:#166534;--g700:#15803d;--g600:#16a34a;
+  --g500:#22c55e;--g400:#4ade80;--g200:#bbf7d0;--g100:#dcfce7;--g50:#f0fdf4;
+  --e800:#292524;--e700:#44403c;--e600:#57534e;--e400:#a8a29e;--e200:#e7e5e4;--e100:#f5f5f4;
+  --amber:#f59e0b;--amberL:#fef3c7;--red:#ef4444;--redL:#fee2e2;--blue:#3b82f6;--blueL:#dbeafe;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--e100);color:var(--e800);font-size:14px;line-height:1.7}
+@media print{body{background:white;font-size:11px}.no-print{display:none!important}.tab-panel{display:block!important}.tabs-nav{position:static}}
 
-  :root {
-    --green-950: #052e16;
-    --green-900: #14532d;
-    --green-800: #166534;
-    --green-700: #15803d;
-    --green-600: #16a34a;
-    --green-500: #22c55e;
-    --green-400: #4ade80;
-    --green-100: #dcfce7;
-    --green-50:  #f0fdf4;
-    --earth-800: #292524;
-    --earth-700: #44403c;
-    --earth-600: #57534e;
-    --earth-400: #a8a29e;
-    --earth-200: #e7e5e4;
-    --earth-100: #f5f5f4;
-    --amber-500: #f59e0b;
-    --amber-100: #fef3c7;
-    --red-500:   #ef4444;
-    --red-100:   #fee2e2;
-    --blue-500:  #3b82f6;
-    --blue-100:  #dbeafe;
-    --white: #ffffff;
-  }
+/* ── HEADER ── */
+header{background:linear-gradient(135deg,var(--g950),var(--g800));color:white;padding:44px 24px 36px;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(74,222,128,.08),transparent 60%)}
+.hdr-inner{max-width:900px;margin:0 auto;position:relative}
+.hdr-brand{font-size:11px;font-weight:700;letter-spacing:3px;color:var(--g400);text-transform:uppercase;margin-bottom:14px}
+header h1{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.2;margin-bottom:10px}
+header p{font-size:13px;color:rgba(255,255,255,.65);max-width:520px;margin-bottom:24px}
+.hdr-tags{display:flex;flex-wrap:wrap;gap:10px}
+.hdr-tag{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:4px 14px;font-size:12px;font-weight:500;color:rgba(255,255,255,.85)}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── TABS NAV ── */
+.tabs-nav{position:sticky;top:0;z-index:100;background:var(--g900);display:flex;overflow-x:auto;box-shadow:0 2px 12px rgba(0,0,0,.3)}
+.tab-btn{flex:1;min-width:110px;padding:14px 16px;background:transparent;border:none;border-bottom:3px solid transparent;color:rgba(255,255,255,.55);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;letter-spacing:.5px;text-transform:uppercase;transition:all .2s}
+.tab-btn:hover{color:white;background:rgba(255,255,255,.05)}
+.tab-btn.active{color:var(--g400);border-bottom-color:var(--g400);background:rgba(74,222,128,.07)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--earth-100);
-    color: var(--earth-800);
-    font-size: 14px;
-    line-height: 1.7;
-  }
+/* ── LAYOUT ── */
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+section{margin-bottom:36px}
 
-  /* ─── PRINT ─────────────────────────────────── */
-  @media print {
-    body { background: white; font-size: 12px; }
-    .no-print { display: none !important; }
-    .page-break { page-break-before: always; }
-    .card { break-inside: avoid; }
-    header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .badge, .status-ok, .status-warn, .status-bad { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    table { break-inside: avoid; }
-  }
+/* ── TYPOGRAPHY ── */
+h2{font-size:18px;font-weight:700;color:var(--g900);margin:32px 0 12px;display:flex;align-items:center;gap:10px}
+h2::before{content:'';display:block;width:4px;height:20px;background:var(--g600);border-radius:2px;flex-shrink:0}
+h3{font-size:14px;font-weight:700;color:var(--g800);margin:22px 0 8px;text-transform:uppercase;letter-spacing:.8px}
+p{font-size:13px;color:var(--e700);margin-bottom:8px}
+strong{color:var(--e800)}
 
-  /* ─── LAYOUT ─────────────────────────────────── */
-  .container { max-width: 960px; margin: 0 auto; padding: 0 24px 60px; }
+/* ── KPI GRID ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.kpi{background:white;border:1px solid var(--e200);border-radius:10px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.kpi-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--e400);margin-bottom:6px}
+.kpi-val{font-size:22px;font-weight:800;color:var(--g800);line-height:1}
+.kpi-sub{font-size:11px;color:var(--e600);margin-top:4px}
 
-  /* ─── COVER ──────────────────────────────────── */
-  header {
-    background: linear-gradient(135deg, var(--green-950) 0%, var(--green-800) 60%, var(--green-700) 100%);
-    color: white;
-    padding: 60px 24px 50px;
-    position: relative;
-    overflow: hidden;
-  }
-  header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .header-inner { max-width: 960px; margin: 0 auto; position: relative; }
-  .header-logo {
-    font-size: 11px; font-weight: 700; letter-spacing: 3px;
-    color: var(--green-400); text-transform: uppercase; margin-bottom: 20px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .header-logo span { opacity: 0.5; }
-  h1 {
-    font-size: clamp(28px, 5vw, 42px); font-weight: 800;
-    line-height: 1.15; margin-bottom: 14px;
-  }
-  .header-sub {
-    font-size: 15px; color: rgba(255,255,255,0.7);
-    max-width: 560px; margin-bottom: 32px;
-  }
-  .header-meta {
-    display: flex; flex-wrap: wrap; gap: 20px;
-    font-size: 12px; color: rgba(255,255,255,0.55);
-  }
-  .header-meta strong { color: rgba(255,255,255,0.9); }
+/* ── CARDS ── */
+.card{background:white;border:1px solid var(--e200);border-radius:10px;padding:20px 22px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card.green{border-left:4px solid var(--g500)}
+.card.amber{border-left:4px solid var(--amber)}
+.card.red{border-left:4px solid var(--red)}
+.card.blue{border-left:4px solid var(--blue)}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:12px 0}
+.role-card{background:white;border:1px solid var(--e200);border-radius:10px;padding:16px;border-top:4px solid var(--g600)}
+.role-card .role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--e400);margin-bottom:6px}
+.role-card .title{font-size:15px;font-weight:700;color:var(--g900);margin-bottom:8px}
+.role-card ul{list-style:none;font-size:12px;color:var(--e700)}
+.role-card ul li{padding:3px 0;border-bottom:1px solid var(--e100)}
+.role-card ul li:last-child{border:none}
 
-  /* ─── TOC ────────────────────────────────────── */
-  .toc {
-    background: white; border-radius: 12px;
-    padding: 28px 32px; margin: 32px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    border: 1px solid var(--earth-200);
-  }
-  .toc h2 { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green-700); margin-bottom: 16px; }
-  .toc ol { padding-left: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
-  .toc li { font-size: 13px; color: var(--earth-700); }
-  .toc a { color: var(--green-700); text-decoration: none; font-weight: 500; }
-  .toc a:hover { text-decoration: underline; }
-  @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+/* ── TABLES ── */
+.tbl{overflow-x:auto;margin:12px 0;border-radius:8px;border:1px solid var(--e200)}
+table{width:100%;border-collapse:collapse;background:white;font-size:12.5px}
+thead{background:var(--g900);color:white}
+thead th{padding:10px 12px;text-align:left;font-weight:600;font-size:11px;letter-spacing:.5px}
+tbody tr:nth-child(even){background:var(--g50)}
+tbody td{padding:9px 12px;border-bottom:1px solid var(--e200);vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr.highlight-row{background:#fff7ed!important}
+tbody tr.win-row{background:var(--g50)!important;font-weight:600}
 
-  /* ─── SECTION HEADINGS ───────────────────────── */
-  .section-header {
-    display: flex; align-items: center; gap: 14px;
-    margin: 48px 0 20px;
-  }
-  .section-number {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: var(--green-700); color: white;
-    font-size: 14px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .section-title { font-size: 20px; font-weight: 700; color: var(--green-900); }
-  .section-desc { font-size: 13px; color: var(--earth-600); margin-top: 2px; }
+/* ── BADGES ── */
+.ok{display:inline-flex;align-items:center;gap:3px;background:var(--g100);color:var(--g800);border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700}
+.warn{display:inline-flex;align-items:center;gap:3px;background:var(--amberL);color:#92400e;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700}
+.bad{display:inline-flex;align-items:center;gap:3px;background:var(--redL);color:#991b1b;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700}
+.tag{display:inline-block;background:var(--g100);color:var(--g800);border-radius:4px;padding:1px 7px;font-size:11px;font-weight:700}
 
-  h3 { font-size: 15px; font-weight: 700; color: var(--green-800); margin: 28px 0 10px; }
-  h4 { font-size: 13px; font-weight: 600; color: var(--earth-700); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: 1px; }
+/* ── HIGHLIGHT BOX ── */
+.box{border-radius:8px;padding:14px 18px;margin:12px 0;font-size:13px}
+.box-green{background:var(--g50);border:1px solid var(--g200)}
+.box-amber{background:var(--amberL);border:1px solid #fcd34d}
+.box-red{background:var(--redL);border:1px solid #fca5a5}
+.box-blue{background:var(--blueL);border:1px solid #93c5fd}
+.box strong{display:block;margin-bottom:5px}
 
-  /* ─── CARDS ──────────────────────────────────── */
-  .card {
-    background: white; border-radius: 12px;
-    padding: 24px 28px; margin-bottom: 16px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    border: 1px solid var(--earth-200);
-  }
-  .card-green { border-left: 4px solid var(--green-500); }
-  .card-amber { border-left: 4px solid var(--amber-500); }
-  .card-red   { border-left: 4px solid var(--red-500); }
-  .card-blue  { border-left: 4px solid var(--blue-500); }
+/* ── FORMULA ── */
+.formula{background:var(--g950);color:var(--g400);border-radius:8px;padding:18px 20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.9;margin:12px 0}
+.formula .c{color:var(--g700)}
 
-  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 16px; }
+/* ── STEPS ── */
+.steps{counter-reset:s;display:flex;flex-direction:column;gap:10px}
+.step{display:flex;gap:12px}
+.step-n{counter-increment:s;width:26px;height:26px;border-radius:50%;background:var(--g700);color:white;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-body .st{font-weight:600;font-size:13px;color:var(--e800)}
+.step-body .sd{font-size:12px;color:var(--e600);margin-top:3px}
 
-  .kpi-card {
-    background: white; border-radius: 12px; padding: 20px 22px;
-    border: 1px solid var(--earth-200);
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-  }
-  .kpi-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--earth-400); margin-bottom: 6px; }
-  .kpi-value { font-size: 26px; font-weight: 800; color: var(--green-800); line-height: 1; }
-  .kpi-sub   { font-size: 12px; color: var(--earth-600); margin-top: 4px; }
+/* ── COMPARE ── */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cmp-box{border-radius:10px;padding:18px 20px}
+.cmp-g{background:var(--g50);border:1px solid var(--g200)}
+.cmp-r{background:var(--redL);border:1px solid #fca5a5}
+.cmp-box h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.cmp-g h4{color:var(--g800)}
+.cmp-r h4{color:#991b1b}
+.cmp-box ul{list-style:none;font-size:12px}
+.cmp-box ul li{padding:4px 0;display:flex;gap:8px;border-bottom:1px solid rgba(0,0,0,.05)}
+@media(max-width:600px){.cmp{grid-template-columns:1fr}}
 
-  /* ─── TABLES ─────────────────────────────────── */
-  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--earth-200); }
-  table { width: 100%; border-collapse: collapse; background: white; font-size: 13px; }
-  thead { background: var(--green-900); color: white; }
-  thead th { padding: 11px 14px; text-align: left; font-weight: 600; font-size: 12px; letter-spacing: 0.5px; }
-  tbody tr:nth-child(even) { background: var(--green-50); }
-  tbody td { padding: 10px 14px; border-bottom: 1px solid var(--earth-200); vertical-align: top; }
-  tbody tr:last-child td { border-bottom: none; }
+/* ── TIMELINE ── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--g200)}
+.tl{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-24px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--g600);border:3px solid white;box-shadow:0 0 0 2px var(--g300,#86efac)}
+.tl-week{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--g700);margin-bottom:2px}
+.tl-title{font-size:13px;font-weight:600;color:var(--e800)}
+.tl-body{font-size:12px;color:var(--e600);margin-top:3px}
 
-  /* ─── STATUS BADGES ──────────────────────────── */
-  .status-ok   { display: inline-flex; align-items: center; gap: 4px; background: var(--green-100); color: var(--green-800); border-radius: 99px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
-  .status-warn { display: inline-flex; align-items: center; gap: 4px; background: var(--amber-100); color: #92400e; border-radius: 99px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
-  .status-bad  { display: inline-flex; align-items: center; gap: 4px; background: var(--red-100); color: #991b1b; border-radius: 99px; padding: 2px 10px; font-size: 12px; font-weight: 600; }
-  .badge { display: inline-flex; align-items: center; gap: 4px; background: var(--green-100); color: var(--green-800); border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 700; }
+/* ── ROI BARS ── */
+.bar-wrap{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+.bar-row{display:flex;align-items:center;gap:10px}
+.bar-label{width:120px;font-size:12px;font-weight:600;color:var(--e700);flex-shrink:0;text-align:right}
+.bar-track{flex:1;background:var(--e200);border-radius:99px;height:22px;overflow:hidden}
+.bar-fill{height:100%;border-radius:99px;display:flex;align-items:center;padding-left:10px;font-size:11px;font-weight:700;color:white;white-space:nowrap}
+.bar-val{font-size:12px;font-weight:700;color:var(--e700);width:100px;flex-shrink:0}
 
-  /* ─── HIGHLIGHT BOXES ────────────────────────── */
-  .highlight {
-    border-radius: 10px; padding: 18px 22px; margin: 16px 0;
-    font-size: 13px;
-  }
-  .highlight-green { background: var(--green-50); border: 1px solid var(--green-200, #bbf7d0); }
-  .highlight-amber { background: var(--amber-100); border: 1px solid #fcd34d; }
-  .highlight-red   { background: var(--red-100);   border: 1px solid #fca5a5; }
-  .highlight-blue  { background: var(--blue-100);  border: 1px solid #93c5fd; }
+/* ── DIVIDER ── */
+hr{border:none;border-top:1px solid var(--e200);margin:28px 0}
 
-  .highlight strong { display: block; margin-bottom: 6px; font-size: 13px; }
+/* ── PRINT BTN ── */
+.print-btn{position:fixed;bottom:24px;right:24px;background:var(--g700);color:white;border:none;border-radius:99px;padding:11px 20px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);z-index:99;display:flex;align-items:center;gap:8px;transition:background .2s}
+.print-btn:hover{background:var(--g800)}
 
-  /* ─── FORMULA BOX ────────────────────────────── */
-  .formula {
-    background: var(--green-950); color: var(--green-400);
-    border-radius: 10px; padding: 20px 24px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; line-height: 1.8;
-    margin: 16px 0;
-  }
-  .formula .comment { color: var(--green-700); }
-
-  /* ─── CHECKLIST ──────────────────────────────── */
-  .checklist { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .checklist li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; padding: 8px 12px; border-radius: 8px; background: var(--green-50); }
-  .checklist li::before { content: '☐'; color: var(--green-600); font-size: 16px; line-height: 1; flex-shrink: 0; }
-  .checklist li.done::before { content: '✓'; color: var(--green-600); }
-
-  /* ─── TIMELINE ───────────────────────────────── */
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: var(--green-200, #bbf7d0); }
-  .tl-item { position: relative; margin-bottom: 24px; }
-  .tl-dot { position: absolute; left: -28px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--green-600); border: 3px solid white; box-shadow: 0 0 0 2px var(--green-300, #86efac); }
-  .tl-week { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--green-700); margin-bottom: 4px; }
-  .tl-title { font-size: 14px; font-weight: 600; color: var(--earth-800); }
-  .tl-body { font-size: 13px; color: var(--earth-600); margin-top: 4px; }
-
-  /* ─── STEP LIST ──────────────────────────────── */
-  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
-  .step { display: flex; gap: 14px; align-items: flex-start; }
-  .step-num {
-    counter-increment: step;
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--green-700); color: white;
-    font-size: 12px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .step-content { flex: 1; }
-  .step-title { font-weight: 600; font-size: 14px; color: var(--earth-800); }
-  .step-body { font-size: 13px; color: var(--earth-600); margin-top: 4px; }
-
-  /* ─── COMPARISON ─────────────────────────────── */
-  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
-  .compare-box { border-radius: 10px; padding: 20px; }
-  .compare-bad  { background: var(--red-100); border: 1px solid #fca5a5; }
-  .compare-good { background: var(--green-100); border: 1px solid #86efac; }
-  .compare-box h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-  .compare-bad h4  { color: #991b1b; }
-  .compare-good h4 { color: var(--green-800); }
-  .compare-box ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-  .compare-box ul li { font-size: 13px; display: flex; gap: 8px; }
-  @media (max-width: 600px) { .compare-grid { grid-template-columns: 1fr; } }
-
-  /* ─── DIVIDER ────────────────────────────────── */
-  .divider { border: none; border-top: 1px solid var(--earth-200); margin: 40px 0; }
-
-  /* ─── FOOTER ─────────────────────────────────── */
-  footer {
-    background: var(--green-950); color: rgba(255,255,255,0.5);
-    text-align: center; padding: 30px 24px;
-    font-size: 12px; margin-top: 60px;
-  }
-  footer strong { color: rgba(255,255,255,0.9); }
-
-  /* ─── PRINT BUTTON ───────────────────────────── */
-  .print-btn {
-    position: fixed; bottom: 28px; right: 28px;
-    background: var(--green-700); color: white;
-    border: none; border-radius: 99px;
-    padding: 12px 22px; font-size: 14px; font-weight: 600;
-    cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    display: flex; align-items: center; gap: 8px;
-    z-index: 99; transition: background 0.2s;
-  }
-  .print-btn:hover { background: var(--green-800); }
-
-  p { margin-bottom: 10px; font-size: 13px; color: var(--earth-700); }
-  ul { padding-left: 18px; font-size: 13px; color: var(--earth-700); }
-  li { margin-bottom: 4px; }
-  strong { color: var(--earth-800); }
-  code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--earth-200); border-radius: 4px; padding: 1px 5px; }
-
-  .emoji { font-size: 18px; }
+footer{background:var(--g950);color:rgba(255,255,255,.45);text-align:center;padding:24px;font-size:11px;margin-top:40px}
+footer strong{color:rgba(255,255,255,.8)}
 </style>
 </head>
 <body>
 
-<!-- ═══ HEADER ══════════════════════════════════════════════════════ -->
+<!-- HEADER -->
 <header>
-  <div class="header-inner">
-    <div class="header-logo">🐛 InsTech <span>|</span> Divisi Budidaya Cacing</div>
-    <h1>Analisa Teknis & SOP<br>Budidaya Cacing Tanah</h1>
-    <p class="header-sub">
-      Studi kelayakan dan panduan operasional lengkap pengolahan sludge WWTP Garudafood
-      menggunakan teknologi vermicomposting sebagai alternatif pengganti BSF.
-    </p>
-    <div class="header-meta">
-      <div>Disusun <strong>September 2026</strong></div>
-      <div>Versi <strong>1.0</strong></div>
-      <div>Referensi <strong>15+ peer-reviewed studies</strong></div>
-      <div>Status <strong class="status-ok">Feasibility: TINGGI</strong></div>
+  <div class="hdr-inner">
+    <div class="hdr-brand">🐛 InsTech · Divisi Pengolahan Limbah</div>
+    <h1>Budidaya Cacing Tanah<br>Sludge WWTP Garudafood</h1>
+    <p>Analisa teknis, kapasitas 96 biopond, manajemen tim, dan proyeksi bisnis — solusi pengganti BSF berbasis vermicomposting dengan pre-treatment Trichoderma + EM4.</p>
+    <div class="hdr-tags">
+      <span class="hdr-tag">96 Biopond 170×90 cm</span>
+      <span class="hdr-tag">Target 800–1.500 kg Sludge/hari</span>
+      <span class="hdr-tag">Spesies: Eudrilus eugeniae (ANC)</span>
+      <span class="hdr-tag">September 2026</span>
     </div>
   </div>
 </header>
 
-<!-- ═══ CONTAINER ════════════════════════════════════════════════════ -->
-<div class="container">
+<!-- TAB NAVIGATION -->
+<nav class="tabs-nav" role="tablist">
+  <button class="tab-btn active" onclick="switchTab('teknis',this)">01 · Teknis</button>
+  <button class="tab-btn" onclick="switchTab('sop',this)">02 · SOP</button>
+  <button class="tab-btn" onclick="switchTab('kapasitas',this)">03 · Kapasitas</button>
+  <button class="tab-btn" onclick="switchTab('tim',this)">04 · Tim & Ops</button>
+  <button class="tab-btn" onclick="switchTab('bisnis',this)">05 · Bisnis & ROI</button>
+</nav>
 
-  <!-- TOC -->
-  <div class="toc no-print">
-    <h2>Daftar Isi</h2>
-    <ol>
-      <li><a href="#exec">Executive Summary</a></li>
-      <li><a href="#problem">Masalah BSF & Solusi Cacing</a></li>
-      <li><a href="#sludge">Analisa Sludge Garudafood</a></li>
-      <li><a href="#spesies">Pemilihan Spesies</a></li>
-      <li><a href="#formula">Formula Mixing Media</a></li>
-      <li><a href="#infrastruktur">Infrastruktur & Tools</a></li>
-      <li><a href="#sop">SOP Operasional</a></li>
-      <li><a href="#harvest">Harvesting & Produk</a></li>
-      <li><a href="#qc">Quality Control</a></li>
-      <li><a href="#troubleshoot">Troubleshooting</a></li>
-      <li><a href="#pilot">Pilot Plan 3 Bulan</a></li>
-      <li><a href="#yield">Expected Yield</a></li>
-      <li><a href="#pretreatment">🆕 Pre-Treatment: Trichoderma & EM4</a></li>
-      <li><a href="#kapasitas">🆕 Kapasitas Cacing per m²</a></li>
-      <li><a href="#growth">🆕 Pertumbuhan & Bobot Cacing</a></li>
-      <li><a href="#master">🆕 Master Formula & Timeline</a></li>
-    </ol>
-  </div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TAB 1 — TEKNIS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-teknis" class="tab-panel active">
+<div class="wrap">
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 0. EXECUTIVE SUMMARY -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="exec">
-    <div class="section-number">0</div>
-    <div>
-      <div class="section-title">Executive Summary</div>
-      <div class="section-desc">Temuan utama & rekomendasi</div>
+  <section>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">Kelembaban Sludge</div><div class="kpi-val">75%</div><div class="kpi-sub">✅ Ideal cacing (60–80%)</div></div>
+      <div class="kpi"><div class="kpi-label">Spesies Target</div><div class="kpi-val" style="font-size:15px">ANC</div><div class="kpi-sub">Eudrilus eugeniae</div></div>
+      <div class="kpi"><div class="kpi-label">Growth Rate ANC</div><div class="kpi-val">28.8</div><div class="kpi-sub">mg / ekor / hari</div></div>
+      <div class="kpi"><div class="kpi-label">Doubling Time</div><div class="kpi-val">60 hr</div><div class="kpi-sub">Biomass × 2 tiap 2 bulan</div></div>
+      <div class="kpi"><div class="kpi-label">Harga Jual Cacing</div><div class="kpi-val">20rb</div><div class="kpi-sub">Rp/kg ke pengepul (existing)</div></div>
+      <div class="kpi"><div class="kpi-label">Efisiensi Suhu</div><div class="kpi-val">&lt;30°C</div><div class="kpi-sub">Sejuk — site tertutup ideal</div></div>
     </div>
-  </div>
+  </section>
 
-  <div class="card-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Kadar Air Sludge</div>
-      <div class="kpi-value">75%</div>
-      <div class="kpi-sub">✅ Ideal untuk cacing (60–80%)</div>
+  <section>
+    <h2>Mengapa Cacing, Bukan BSF?</h2>
+    <div class="cmp">
+      <div class="cmp-box cmp-r">
+        <h4>❌ BSF — Masalah di Site Ini</h4>
+        <ul>
+          <li><span>❌</span> Sludge 75% moisture → larva tidak tumbuh</li>
+          <li><span>❌</span> Air terikat keluar saat dimakan → makin becek</li>
+          <li><span>❌</span> Chemical WWTP → toksik untuk larva muda</li>
+          <li><span>🔥</span> Proses 40–50°C → site pengap, panas</li>
+          <li><span>❌</span> Nutrisi sludge rendah → FCR jelek</li>
+          <li><span>❌</span> Butuh pre-drying sludge → biaya tambahan</li>
+        </ul>
+      </div>
+      <div class="cmp-box cmp-g">
+        <h4>✅ Cacing Tanah — Solusi</h4>
+        <ul>
+          <li><span>✅</span> 75% moisture = IDEAL, tidak perlu treatment</li>
+          <li><span>✅</span> Suka kondisi lembab — tidak ada masalah</li>
+          <li><span>✅</span> Toleran chemical & heavy metal (15+ studi)</li>
+          <li><span>❄️</span> Proses mesophilic &lt;30°C → site nyaman</li>
+          <li><span>✅</span> Mix kotoran sapi perbaiki nutrisi (murah)</li>
+          <li><span>✅</span> Double revenue: cacing + kascing</li>
+        </ul>
+      </div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Harga Jual Cacing ANC</div>
-      <div class="kpi-value">Rp 20k</div>
-      <div class="kpi-sub">Per kg ke pengepul existing</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Budget Pilot</div>
-      <div class="kpi-value">~Rp 1,9M</div>
-      <div class="kpi-sub">Untuk 3 bulan uji coba</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Durasi per Batch</div>
-      <div class="kpi-value">8–12W</div>
-      <div class="kpi-sub">Minggu hingga kascing matang</div>
-    </div>
-  </div>
+  </section>
 
-  <div class="card card-green">
-    <h3 style="margin-top:0">🎯 Kesimpulan Utama</h3>
-    <p>
-      Berdasarkan analisa karakteristik sludge WWTP Garudafood dan 15+ studi ilmiah peer-reviewed,
-      budidaya cacing tanah (vermicomposting) adalah <strong>solusi yang lebih superior dibandingkan BSF</strong>
-      untuk kondisi spesifik site ini.
-    </p>
-    <p>
-      Kadar air sludge 75% yang menjadi masalah utama BSF justru masuk dalam range <strong>ideal</strong> untuk cacing (60–80%).
-      Site tertutup Garudafood memberikan keunggulan alami: suhu stabil, teduh, dan sejuk bagi pekerja — karena
-      vermicomposting tidak menghasilkan panas berlebih seperti BSF atau composting konvensional.
-    </p>
-    <p style="margin:0">
-      Pasar pengepul sudah tersedia di harga <strong>Rp 20.000/kg ANC</strong>, dan kascing (pupuk cacing) menjadi
-      produk sampingan bernilai yang membuka revenue stream kedua.
-    </p>
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 1. MASALAH BSF vs SOLUSI CACING -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="problem">
-    <div class="section-number">1</div>
-    <div>
-      <div class="section-title">Masalah BSF vs Solusi Cacing</div>
-      <div class="section-desc">Analisa komparatif untuk sludge Garudafood</div>
-    </div>
-  </div>
-
-  <div class="compare-grid">
-    <div class="compare-box compare-bad">
-      <h4>❌ BSF (Kondisi Saat Ini)</h4>
-      <ul>
-        <li>❌ Sludge 75% moisture → larva tidak tumbuh / lambat</li>
-        <li>❌ Air terikat keluar saat dimakan → media makin becek</li>
-        <li>❌ Nutrisi sludge rendah → FCR jelek</li>
-        <li>❌ Chemical WWTP → potensi toksik untuk larva</li>
-        <li>🔥 Menghasilkan panas 40–50°C → site pengap, tidak nyaman</li>
-        <li>❌ Butuh pre-treatment sludge (kurangi moisture) → biaya tambahan</li>
-      </ul>
-    </div>
-    <div class="compare-box compare-good">
-      <h4>✅ Cacing Tanah (Solusi)</h4>
-      <ul>
-        <li>✅ Toleran moisture 60–80% → 75% IDEAL, tanpa treatment</li>
-        <li>✅ Suka kondisi becek/lembab → tidak ada masalah air terikat</li>
-        <li>✅ Campuran kotoran sapi perbaiki nutrisi (murah)</li>
-        <li>✅ Terbukti toleran chemical WWTP & logam berat (15+ studi)</li>
-        <li>❄️ Proses mesophilic <30°C → site tetap sejuk, nyaman pekerja</li>
-        <li>✅ Double produk: cacing hidup + kascing premium</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 2. ANALISA SLUDGE -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="sludge">
-    <div class="section-number">2</div>
-    <div>
-      <div class="section-title">Analisa Sludge WWTP Garudafood</div>
-      <div class="section-desc">Parameter vs kebutuhan optimal cacing</div>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Kondisi Sludge</th>
-          <th>Kebutuhan Optimal Cacing</th>
-          <th>Status</th>
-          <th>Solusi</th>
-        </tr>
-      </thead>
+  <section>
+    <h2>Analisa Sludge vs Kebutuhan Cacing</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Parameter</th><th>Kondisi Sludge</th><th>Kebutuhan Cacing</th><th>Status</th><th>Solusi</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Kadar Air (Moisture)</strong></td>
-          <td>~75%</td>
-          <td>60–80%</td>
-          <td><span class="status-ok">✅ IDEAL</span></td>
-          <td>Tidak perlu treatment</td>
-        </tr>
-        <tr>
-          <td><strong>pH</strong></td>
-          <td>Perlu uji lab</td>
-          <td>5.5–8.0</td>
-          <td><span class="status-warn">⚠️ Perlu Cek</span></td>
-          <td>Campurkan kotoran sapi (buffer pH)</td>
-        </tr>
-        <tr>
-          <td><strong>Suhu Media</strong></td>
-          <td>Ambient (site tertutup)</td>
-          <td>15–30°C</td>
-          <td><span class="status-ok">✅ IDEAL</span></td>
-          <td>Site tertutup → suhu stabil</td>
-        </tr>
-        <tr>
-          <td><strong>C/N Ratio</strong></td>
-          <td>Rendah (sludge cenderung N-rich)</td>
-          <td>18–30:1</td>
-          <td><span class="status-warn">⚠️ Perlu Perbaikan</span></td>
-          <td>Tambah kotoran sapi + sawdust (carbon source)</td>
-        </tr>
-        <tr>
-          <td><strong>Chemical WWTP</strong></td>
-          <td>Ada</td>
-          <td>Toleran dalam konsentrasi tertentu</td>
-          <td><span class="status-warn">⚠️ Uji Bertahap</span></td>
-          <td>Start 25% → 50% ratio sludge bertahap</td>
-        </tr>
-        <tr>
-          <td><strong>Nutrisi Organik</strong></td>
-          <td>Rendah</td>
-          <td>Cukup untuk cacing</td>
-          <td><span class="status-warn">⚠️ Perlu Enrichment</span></td>
-          <td>Mix dengan kotoran sapi (cheap &amp; effective)</td>
-        </tr>
-        <tr>
-          <td><strong>Konsistensi/Tekstur</strong></td>
-          <td>Becek, encer</td>
-          <td>Lembab, porous</td>
-          <td><span class="status-ok">✅ OK</span></td>
-          <td>Tambah sawdust/sekam (improve struktur)</td>
-        </tr>
+        <tr><td><strong>Moisture</strong></td><td>75%</td><td>60–80%</td><td><span class="ok">✅ Ideal</span></td><td>Tidak perlu treatment</td></tr>
+        <tr><td><strong>Suhu Proses</strong></td><td>Ambient (site tertutup)</td><td>15–30°C</td><td><span class="ok">✅ Ideal</span></td><td>Site sudah tertutup</td></tr>
+        <tr><td><strong>pH</strong></td><td>Perlu uji lab</td><td>5.5–8.0</td><td><span class="warn">⚠️ Perlu cek</span></td><td>Kotoran sapi buffer pH</td></tr>
+        <tr><td><strong>C/N Ratio</strong></td><td>Rendah (N-rich sludge)</td><td>18–30 : 1</td><td><span class="warn">⚠️ Koreksi</span></td><td>Tambah sawdust (carbon)</td></tr>
+        <tr><td><strong>Chemical WWTP</strong></td><td>Ada</td><td>Toleran bertahap</td><td><span class="warn">⚠️ Uji dulu</span></td><td>Start 25% → 50% → 60%</td></tr>
+        <tr><td><strong>Nutrisi</strong></td><td>Rendah</td><td>Cukup untuk cacing</td><td><span class="warn">⚠️ Enrichment</span></td><td>Mix kotoran sapi 40%</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <div class="highlight highlight-green">
-    <strong>💡 Key Insight dari Riset Ilmiah</strong>
-    Studi vermicomposting sludge industri makanan (bakery, food processing, pulp &amp; paper) dengan Eisenia fetida
-    <strong>tidak menunjukkan mortalitas signifikan</strong> dan menghasilkan pertumbuhan positif 10–30%.
-    Cacing bahkan menyerap heavy metals ke jaringan tubuhnya → kascing yang dihasilkan lebih bersih dari sludge aslinya.
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 3. SPESIES -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="spesies">
-    <div class="section-number">3</div>
-    <div>
-      <div class="section-title">Pemilihan Spesies Cacing</div>
-      <div class="section-desc">Perbandingan 3 spesies utama untuk konteks ini</div>
+  <section>
+    <h2>Spesies & Formula Mixing</h2>
+    <div class="card green">
+      <p><strong>Fase Pilot (Bulan 1–3):</strong> Eisenia fetida — riset terbanyak untuk WWTP sludge, lebih predictable, harga bibit Rp 60–70rb/kg.</p>
+      <p style="margin:0"><strong>Fase Komersial (Bulan 4+):</strong> Eudrilus eugeniae (ANC) — 4.6× lebih cepat tumbuh, pengepul existing Rp 20.000/kg, bioremediasi heavy metal superior.</p>
     </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Spesies</th>
-          <th>Nama Populer</th>
-          <th>Keunggulan</th>
-          <th>Kekurangan</th>
-          <th>Rekomendasi</th>
-        </tr>
-      </thead>
+    <div class="tbl"><table>
+      <thead><tr><th>Parameter</th><th>ANC (Eudrilus)</th><th>Eisenia fetida</th><th>Pemenang</th></tr></thead>
       <tbody>
-        <tr>
-          <td><em>Eisenia fetida</em></td>
-          <td>Tiger Worm / Cacing Merah</td>
-          <td>
-            ✅ Toleransi chemical &amp; heavy metal tertinggi<br>
-            ✅ Paling banyak riset untuk sludge WWTP<br>
-            ✅ Reproduksi cepat<br>
-            ✅ Toleran suhu tinggi
-          </td>
-          <td>Harga bibit Rp 70.000/kg</td>
-          <td><span class="badge">⭐ FASE PILOT</span><br><small>Paling aman untuk uji coba sludge</small></td>
-        </tr>
-        <tr>
-          <td><em>Lumbricus rubellus</em></td>
-          <td>Cacing Merah / Lumbricus</td>
-          <td>
-            ✅ Produktivitas tertinggi (106 kokon/tahun)<br>
-            ✅ Survival rate tinggi<br>
-            ✅ Mudah beradaptasi
-          </td>
-          <td>Riset untuk sludge food processing lebih sedikit</td>
-          <td><span class="badge">⭐⭐ Alternatif</span><br><small>Setelah pilot E. fetida sukses</small></td>
-        </tr>
-        <tr style="background: #f0fdf4;">
-          <td><strong><em>Eudrilus eugeniae</em></strong></td>
-          <td><strong>ANC (African Night Crawler)</strong></td>
-          <td>
-            ✅ <strong>Pengepul sudah ada (Rp 20.000/kg)</strong><br>
-            ✅ Bioremediasi heavy metal SUPERIOR<br>
-            ✅ Pertumbuhan cepat di iklim tropis<br>
-            ✅ Ukuran besar → nilai jual tinggi
-          </td>
-          <td>
-            Riset sludge food processing lebih sedikit<br>
-            Butuh suhu stabil (tropis)
-          </td>
-          <td><span class="badge" style="background:#166534;color:white">⭐⭐⭐⭐ TARGET</span><br><small>Scale-up komersial</small></td>
-        </tr>
+        <tr><td>Growth rate/hari</td><td><strong>28.8 mg/ekor/hari</strong></td><td>6.2 mg/ekor/hari</td><td>🏆 ANC 4.6×</td></tr>
+        <tr><td>Weight gain 28 hari</td><td><strong>820 mg/ekor</strong></td><td>180 mg/ekor</td><td>🏆 ANC</td></tr>
+        <tr><td>Max berat dewasa</td><td><strong>1.116 gram/ekor</strong></td><td>~0.6 gram/ekor</td><td>🏆 ANC lebih besar</td></tr>
+        <tr><td>Gut transit time</td><td><strong>4.5–6 jam</strong></td><td>6–8 jam</td><td>🏆 ANC lebih cepat</td></tr>
+        <tr><td>Doubling time</td><td><strong>45–60 hari</strong></td><td>60–90 hari</td><td>🏆 ANC</td></tr>
+        <tr><td>Kokon / ekor</td><td>2–3 per ekor</td><td><strong>21.8 kokon (6 minggu)</strong></td><td>🏆 Eisenia reproduksi</td></tr>
+        <tr><td>Harga jual</td><td><strong>Rp 20.000/kg (pengepul ada)</strong></td><td>Rp 15.000/kg</td><td>🏆 ANC</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
 
-  <div class="highlight highlight-blue">
-    <strong>🎯 Strategi Dua Fase:</strong>
-    <strong>Fase 1 (Pilot, bulan 1–3):</strong> Eisenia fetida — karena riset untuk WWTP sludge paling banyak dan predictable. <br>
-    <strong>Fase 2 (Scale-up, bulan 4+):</strong> Eudrilus eugeniae (ANC) — karena pasar pengepul sudah ada di Rp 20.000/kg dan bioremediasi heavy metal lebih baik untuk konteks Garudafood.
-  </div>
+    <h3>Formula Mixing (per 100 kg batch)</h3>
+    <div class="formula">
+<span class="c"># BASE MATERIAL</span>
+50 kg  Sludge WWTP          <span class="c"># kadar air 75% — FREE dari Garudafood</span>
+40 kg  Kotoran Sapi         <span class="c"># semi-composted — ~Rp 10.000</span>
+10 kg  Sawdust / Sekam      <span class="c"># bulking agent — ~Rp 5.000</span>
+─────────────────────────────────────────────────────
+<span class="c"># PRE-TREATMENT ACTIVATOR (ditambahkan saat mixing)</span>
+1 kg   Trichoderma harzianum <span class="c"># 1% dari berat — ~Rp 15.000</span>
+1 L    EM4 aktif (10 ml/kg)  <span class="c"># diaktifkan dulu 24 jam — ~Rp 20.000</span>
+100 g  Gula merah            <span class="c"># aktivasi EM4 — ~Rp 2.000</span>
+─────────────────────────────────────────────────────
+Target C/N Ratio : 18–25 : 1
+Target Moisture  : 65–75%  (sudah dari sludge)
+Target pH        : 6.5–7.5 (kotoran sapi buffer)</div>
+  </section>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 4. FORMULA MIXING -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="formula">
-    <div class="section-number">4</div>
-    <div>
-      <div class="section-title">Formula Mixing Media</div>
-      <div class="section-desc">Berdasarkan multi-study best practices untuk sludge WWTP</div>
+  <section>
+    <h2>Pre-Treatment: Trichoderma + EM4</h2>
+    <div class="box box-blue">
+      <strong>🔬 Mengapa Pre-Treatment?</strong>
+      Sludge Garudafood mengandung chemical WWTP dan C/N rendah. Pre-treatment dengan Trichoderma + EM4 selama 14 hari <em>mendekonstruksi</em> senyawa kompleks dan menstabilkan pH/suhu sebelum cacing masuk — sehingga media lebih palatable, pathogen dieliminasi, dan kascing lebih berkualitas.
     </div>
-  </div>
-
-  <div class="formula">
-    <span class="comment"># Formula Target (per 100 kg batch) — berdasarkan 15+ studi</span><br>
-    <br>
-    50 kg  Sludge WWTP Garudafood    <span class="comment"># kadar air 75%, FREE (internal)</span><br>
-    40 kg  Kotoran Sapi              <span class="comment"># semi-composted, ~Rp 10.000</span><br>
-    10 kg  Sawdust / Sekam Padi      <span class="comment"># bulking agent, ~Rp 5.000</span><br>
-    ─────────────────────────────────────────────<br>
-    100 kg TOTAL INPUT               <span class="comment"># biaya material: ~Rp 15.000/100kg</span><br>
-    <br>
-    Target C/N Ratio : 18–25 : 1<br>
-    Target Moisture  : 65–75%  (sudah ideal dari sludge)<br>
-    Target pH        : 6.5–7.5 (kotoran sapi sebagai buffer)<br>
-    Stocking Cacing  : 0.5 kg per 100 kg media
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Batch</th><th>Sludge</th><th>Kotoran Sapi</th><th>Sawdust</th><th>Tujuan</th></tr></thead>
+    <div class="tbl"><table>
+      <thead><tr><th>Tanpa Pre-Treatment</th><th>Dengan Trichoderma + EM4</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>A (Kontrol)</strong></td>
-          <td>0%</td>
-          <td>90%</td>
-          <td>10%</td>
-          <td>Baseline, pastikan cacing hidup sehat</td>
-        </tr>
-        <tr>
-          <td><strong>B (Low Sludge)</strong></td>
-          <td>25%</td>
-          <td>65%</td>
-          <td>10%</td>
-          <td>Tes toleransi awal chemical</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>C (Target ⭐)</strong></td>
-          <td>50%</td>
-          <td>40%</td>
-          <td>10%</td>
-          <td><strong>Formula komersial target</strong></td>
-        </tr>
-        <tr>
-          <td><strong>D (High Sludge)</strong></td>
-          <td>75%</td>
-          <td>15%</td>
-          <td>10%</td>
-          <td>Tes batas maksimum</td>
-        </tr>
+        <tr><td>Risiko mortalitas tinggi (chemical belum terdilusi)</td><td>✅ Pathogen dieliminasi >99% di fase thermophilic</td></tr>
+        <tr><td>Cacing perlu adaptasi 1–2 minggu</td><td>✅ Langsung makan aktif (media sudah pre-digested)</td></tr>
+        <tr><td>NPK kascing lebih rendah</td><td>✅ NPK +30–50% lebih tinggi (studi Fermentation, 2023)</td></tr>
+        <tr><td>C/N ratio akhir 15–20:1</td><td>✅ C/N ratio 10–15:1 (lebih matang)</td></tr>
+        <tr><td>Proses total 10–12 minggu</td><td>✅ <strong>Hemat 2–4 minggu</strong> (total 8–10 minggu)</td></tr>
+        <tr><td>Biaya extra: Rp 0</td><td>Biaya extra: ~Rp 37.000/100 kg (EM4 + Trichoderma)</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+    <div class="box box-amber"><strong>⚠️ Dosis Optimal EM4: 10 ml/kg material</strong>
+    Larutkan dengan gula merah (100g/L) + air (5L), fermentasi 24 jam tertutup sebelum diaplikasikan. Dosis 15 ml/kg mempercepat proses tapi tidak selalu menghasilkan kualitas lebih baik.</div>
+  </section>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 5. INFRASTRUKTUR -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="infrastruktur">
-    <div class="section-number">5</div>
-    <div>
-      <div class="section-title">Infrastruktur & Tools</div>
-      <div class="section-desc">Setup fisik yang dibutuhkan untuk pilot</div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TAB 2 — SOP -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-sop" class="tab-panel">
+<div class="wrap">
+
+  <section>
+    <h2>Setup Biopond untuk Cacing</h2>
+    <div class="card green">
+      <p><strong>Konversi dari BSF:</strong> Biopond maggot 170×90 cm langsung bisa dipakai dengan modifikasi minimal — pastikan ada drainage holes di dasar (Ø 5mm, jarak 10cm) dan ember penampung leachate di bawah. Cacing tidak butuh pencahayaan spesifik — site tertutup yang sudah ada adalah keunggulan.</p>
     </div>
-  </div>
-
-  <h3>Container System — Tray Bertingkat (Rekomendasi Pilot)</h3>
-
-  <div class="card">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:2;color:var(--earth-700);padding:8px;background:var(--earth-100);border-radius:8px;margin-bottom:16px;white-space:pre;">
-┌─────────────────────────────────────────┐
-│  TRAY 4  (Feeding zone — media fresh)   │  ← Cacing migrasi ke sini
-├─────────────────────────────────────────┤
-│  TRAY 3  (Active zone)                  │
-├─────────────────────────────────────────┤
-│  TRAY 2  (Transition zone)              │
-├─────────────────────────────────────────┤
-│  TRAY 1  (Harvest zone — kascing matang)│  ← Panen dari sini
-└──────────────────┬──────────────────────┘
-                   ↓
-           [Ember penampung leachate / liquid kascing]
-    </div>
-    <p>Dimensi per tray: <strong>100 cm × 50 cm × 30 cm</strong> &nbsp;|&nbsp; Kapasitas: 100–150 kg media per tray &nbsp;|&nbsp; Drainage holes: Ø5mm, jarak 10cm</p>
-  </div>
-
-  <h3>Investasi Tools (One-Time)</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Item</th><th>Qty</th><th>Estimasi Harga</th><th>Fungsi</th></tr></thead>
+    <div class="tbl"><table>
+      <thead><tr><th>Spesifikasi</th><th>Nilai</th><th>Catatan</th></tr></thead>
       <tbody>
-        <tr><td>pH meter digital (soil)</td><td>1</td><td>Rp 100.000</td><td>Monitor pH media harian</td></tr>
-        <tr><td>Thermometer digital</td><td>2</td><td>Rp 60.000</td><td>Suhu media + ruangan</td></tr>
-        <tr><td>Moisture meter</td><td>1</td><td>Rp 150.000</td><td>Cek kelembaban media</td></tr>
-        <tr><td>Timbangan digital 5 kg</td><td>1</td><td>Rp 200.000</td><td>Weighing cacing &amp; material</td></tr>
-        <tr><td>Sprayer / gembor</td><td>2</td><td>Rp 100.000</td><td>Penyiraman merata</td></tr>
-        <tr><td>Sekop kecil stainless</td><td>3</td><td>Rp 150.000</td><td>Mixing &amp; aerasi media</td></tr>
-        <tr><td>Ayakan 5mm</td><td>1</td><td>Rp 200.000</td><td>Screening kascing</td></tr>
-        <tr><td>Ember plastik 20L</td><td>5</td><td>Rp 250.000</td><td>Mixing, penampung leachate</td></tr>
-        <tr><td>Sarung tangan karet</td><td>10 pasang</td><td>Rp 100.000</td><td>Safety pekerja</td></tr>
-        <tr><td>Logbook / clipboard</td><td>1</td><td>Rp 50.000</td><td>Recording data harian</td></tr>
-        <tr style="background:#f0fdf4;"><td><strong>TOTAL</strong></td><td colspan="2"><strong>~Rp 1.360.000</strong></td><td>One-time investment</td></tr>
+        <tr><td>Ukuran per biopond</td><td>170 × 90 cm = 1.53 m²</td><td>Sama dengan biopond BSF existing</td></tr>
+        <tr><td>Kedalaman media</td><td>20–25 cm</td><td>Jangan lebih — cacing butuh aerasi</td></tr>
+        <tr><td>Layer per feeding</td><td>5 cm</td><td>Metode layering, tiap 7–10 hari</td></tr>
+        <tr><td>Stocking density target</td><td>5–10 kg/m²</td><td>= 7.7–15.3 kg cacing per biopond</td></tr>
+        <tr><td>Drainage</td><td>Lubang Ø 5mm di dasar</td><td>Sudah ada di biopond BSF?</td></tr>
+        <tr><td>Penutup media</td><td>Karung goni basah / daun pisang</td><td>Jaga kelembaban + gelap</td></tr>
+        <tr><td>Penampung leachate</td><td>Ember 20L di bawah</td><td>Air kascing = produk bonus</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 6. SOP OPERASIONAL -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header page-break" id="sop">
-    <div class="section-number">6</div>
-    <div>
-      <div class="section-title">SOP Operasional</div>
-      <div class="section-desc">Step-by-step dari persiapan media hingga maintenance rutin</div>
-    </div>
-  </div>
-
-  <h3>6.1 — Preparasi Media (Day 0)</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Mixing Material</div>
-        <div class="step-body">Susun layering: kotoran sapi → sludge → sawdust → ulangi. Aduk dengan sekop (folding technique) 5–7 kali sampai homogen. Waktu: ±20 menit per 100 kg.</div>
+  <section>
+    <h2>Siklus Lengkap: Pre-Treatment → Panen</h2>
+    <div class="timeline">
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Day 0 — Mixing & Inokulasi</div>
+        <div class="tl-title">Persiapan Media Pre-Treatment</div>
+        <div class="tl-body">Layer sludge + kotoran sapi + sawdust. Semprotkan larutan EM4 aktif (sudah difermentasi 24 jam). Taburkan Trichoderma harzianum 1%. <em>Tidak perlu diaduk — metode layering.</em></div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Day 1–5</div>
+        <div class="tl-title">Fase Thermophilic</div>
+        <div class="tl-body">Suhu naik 45–60°C (normal & bagus — pathogen mati). Aduk tiap 4 hari. Jangan masukkan cacing dulu.</div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Day 6–14</div>
+        <div class="tl-title">Pendinginan & Stabilisasi</div>
+        <div class="tl-body">Trichoderma bekerja, media mulai lunak. Suhu turun ke &lt;30°C. Cek pH (target 6.5–7.5). Media siap untuk cacing.</div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Day 15</div>
+        <div class="tl-title">Introduksi Cacing</div>
+        <div class="tl-body">Spread 500g cacing per biopond (0.33 kg/m²) di permukaan media. Tutup dengan karung goni basah. Jangan ganggu 3 hari pertama.</div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Week 3–4</div>
+        <div class="tl-title">Top Feeding Pertama (Layering)</div>
+        <div class="tl-body">Tambahkan layer media baru 5 cm di atas media lama. <em>Tidak perlu diaduk.</em> Cacing akan migrasi ke atas secara alami mengikuti pakan baru. Ulangi tiap 7–10 hari.</div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Week 8–10</div>
+        <div class="tl-title">Persiapan Panen</div>
+        <div class="tl-body">Stop tambah media di biopond yang mau dipanen. Siapkan biopond baru dengan media fresh di sebelahnya. Cacing akan migrasi sendiri dalam 1–2 minggu.</div>
+      </div>
+      <div class="tl"><div class="tl-dot"></div>
+        <div class="tl-week">Week 10–12</div>
+        <div class="tl-title">Panen Kascing (Migration Method)</div>
+        <div class="tl-body">90% cacing sudah pindah ke biopond baru. Angkat media lama → kascing matang hitam remah. Sieve (5mm), shade dry 1–2 minggu (moisture &lt;40%), packaging.</div>
       </div>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Parameter Check</div>
-        <div class="step-body">
-          Ukur moisture (genggam test: 1–2 tetes = ideal), pH (target 6.5–7.5), suhu media (harus &lt;30°C sebelum cacing masuk).
-          Jika pH &lt;6 → tambah kapur dolomit 1%. Jika moisture &gt;75% → tambah sawdust extra.
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Loading ke Tray</div>
-        <div class="step-body">Isi tray 20–25 cm (jangan lebih, cacing butuh aerasi). Ratakan, JANGAN dipadatkan. Spray permukaan ringan untuk lembabkan.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <div class="step-title">Pre-Composting / Resting (3–7 hari)</div>
-        <div class="step-body">Diamkan tanpa cacing selama 3–7 hari. Tujuan: stabilisasi pH, suhu turun, mikroba mulai aktif. Monitor suhu harian — tunggu sampai &lt;28°C sebelum masukkan cacing.</div>
-      </div>
-    </div>
-  </div>
+  </section>
 
-  <h3>6.2 — Introduksi Cacing (Day 7–10)</h3>
-  <div class="card card-amber">
-    <strong>⚠️ WAJIB: Aklimatisasi Bertahap</strong>
-    <p style="margin-top:8px;margin-bottom:0">Jangan langsung tuang semua cacing ke media! Masukkan 20% dulu (small batch test). Observasi 24 jam. Jika cacing masuk ke media sendiri (menggali) = TANDA BAGUS. Jika tetap di permukaan = ada masalah pH/suhu/chemical.</p>
-  </div>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Cek Bibit (30 menit)</div>
-        <div class="step-body">Visual check: cacing aktif bergerak, warna cerah, tidak berbau busuk, ada kokon di media. Jika mortalitas &gt;10% saat terima → komplain supplier.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Aklimatisasi Suhu (2 jam)</div>
-        <div class="step-body">Taruh kemasan bibit (tertutup) di area budidaya selama 2 jam. Biarkan suhu media bibit menyesuaikan suhu ruangan sebelum dibuka.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Small Batch Test (20%)</div>
-        <div class="step-body">Spread 20% bibit di permukaan 1 tray. Tutup dengan karung goni basah. Amati 24 jam. ✅ = cacing gali masuk sendiri. ❌ = cacing tidak mau masuk → troubleshoot sebelum lanjut.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <div class="step-title">Full Stocking (Day 2–3)</div>
-        <div class="step-body">Release sisa 80% cacing jika small batch test OK. Spread merata di seluruh tray. Ratio: 500 gram per 100 kg media. Tutup kembali dengan karung goni basah atau koran basah.</div>
-      </div>
-    </div>
-  </div>
-
-  <h3>6.3 — Maintenance Rutin</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Frekuensi</th><th>Aktivitas</th><th>Durasi</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>Harian</strong></td>
-          <td>
-            ✦ Visual check penutup (karung goni basah?) <br>
-            ✦ Moisture spray jika permukaan kering <br>
-            ✦ Ukur suhu media (target 20–28°C) <br>
-            ✦ Odor check (bau earthy = OK, bau busuk/ammonia = masalah) <br>
-            ✦ Kosongkan ember leachate
-          </td>
-          <td>5–10 menit</td>
-        </tr>
-        <tr>
-          <td><strong>Mingguan</strong></td>
-          <td>
-            ✦ Ukur pH &amp; moisture dengan alat ukur <br>
-            ✦ Gali media 10–15 cm (random sampling), hitung cacing &amp; kokon <br>
-            ✦ Top feeding jika media sudah mulai habis (5 cm layer fresh) <br>
-            ✦ Aerasi ringan jika media padat (aduk lembut, depth 10 cm)
-          </td>
-          <td>30 menit</td>
-        </tr>
-        <tr>
-          <td><strong>Bulanan</strong></td>
-          <td>
-            ✦ Biomass weighing (timbang 10% sample cacing) <br>
-            ✦ Kokon count per kg media <br>
-            ✦ Mortality rate calculation (normal &lt;10%/bulan) <br>
-            ✦ Media consumption assessment (berapa % sudah jadi kascing?)
-          </td>
-          <td>1–2 jam</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="highlight highlight-amber">
-    <strong>⚠️ Aturan Emas Penyiraman</strong>
-    Gunakan sprayer (mist), BUKAN guyur langsung. Volume max 500 ml per tray per sesi.
-    Test setelah spray: genggam → 1–2 tetes keluar = STOP. Overwatering adalah penyebab utama kematian cacing massal.
-    Jika pakai air PAM: endapkan 24 jam dulu (chlorine menguap).
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 7. HARVESTING -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="harvest">
-    <div class="section-number">7</div>
-    <div>
-      <div class="section-title">Harvesting & Produk Akhir</div>
-      <div class="section-desc">Kapan dan bagaimana cara panen</div>
-    </div>
-  </div>
-
-  <h3>Indikator Kascing Siap Panen</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Indikator</th><th>Belum Matang</th><th>Siap Panen ✅</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Warna</strong></td><td>Coklat muda-sedang</td><td>Hitam pekat (seperti tanah humus)</td></tr>
-        <tr><td><strong>Tekstur</strong></td><td>Ada serat kasar</td><td>Remah halus, granular</td></tr>
-        <tr><td><strong>Bau</strong></td><td>Bau organik (seperti kompos)</td><td>Earthy smell (tanah hutan)</td></tr>
-        <tr><td><strong>C/N Ratio</strong></td><td>&gt;20:1</td><td>&lt;15:1 (ideal 10–15)</td></tr>
-        <tr><td><strong>Cacing</strong></td><td>Masih banyak di layer ini</td><td>Migrasi ke layer atas (cari makan baru)</td></tr>
-        <tr><td><strong>Timeline</strong></td><td>&lt;8 minggu</td><td>8–12 minggu setelah stocking</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>Metode Panen: Migration Method (Termudah)</h3>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Week 10 — Siapkan Tray Baru di Atas</div>
-        <div class="step-body">Stop top feeding di tray yang mau dipanen. Siapkan tray baru berisi media fresh 15 cm tepat di atas tray harvest. Biarkan 1–2 minggu.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Week 12 — Angkat Tray Bawah</div>
-        <div class="step-body">90% cacing sudah migrasi ke tray atas. Angkat tray bawah → isinya adalah kascing matang. Pisahkan sisa cacing (10%) manual.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Post-Harvest Processing</div>
-        <div class="step-body">Ayak (mesh 5mm), shade dry 1–2 minggu (target moisture 30–40%), sieve final, packaging.</div>
-      </div>
-    </div>
-  </div>
-
-  <h3>Produk &amp; Pemanfaatan</h3>
-  <div class="card-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Produk 1 — Cacing Hidup</div>
-      <div class="kpi-value" style="font-size:18px">Rp 20rb/kg</div>
-      <div class="kpi-sub">Ke pengepul (sudah ada). Umpan pancing, pakan ikan, ekspor.</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Produk 2 — Kascing (Vermicompost)</div>
-      <div class="kpi-value" style="font-size:18px">Rp 500–5rb/kg</div>
-      <div class="kpi-sub">Grade curah hingga premium. Pupuk organik nilai tinggi.</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Produk 3 — Leachate (Air Kascing)</div>
-      <div class="kpi-value" style="font-size:18px">Rp 10–25rb/L</div>
-      <div class="kpi-sub">Pupuk cair organik. Diencerkan 1:20 untuk semprot tanaman.</div>
-    </div>
-  </div>
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 8. QUALITY CONTROL -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="qc">
-    <div class="section-number">8</div>
-    <div>
-      <div class="section-title">Quality Control</div>
-      <div class="section-desc">Parameter kascing dan standar mutu SNI 7763:2018</div>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Parameter</th><th>SNI 7763:2018</th><th>Grade A (Premium)</th><th>Test Method</th></tr></thead>
+  <section>
+    <h2>Quality Control Kascing</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Parameter</th><th>SNI 7763:2018</th><th>Grade A Premium</th><th>Cara Test</th></tr></thead>
       <tbody>
         <tr><td><strong>pH</strong></td><td>6.5–7.5</td><td>6.8–7.2</td><td>pH meter (larutan 1:5)</td></tr>
-        <tr><td><strong>Moisture</strong></td><td>&lt;50%</td><td>&lt;35%</td><td>Moisture meter / oven drying</td></tr>
-        <tr><td><strong>C-Organic</strong></td><td>&gt;12%</td><td>&gt;20%</td><td>Lab (quarterly)</td></tr>
-        <tr><td><strong>N Total</strong></td><td>&gt;1%</td><td>&gt;2%</td><td>Lab (quarterly)</td></tr>
-        <tr><td><strong>P₂O₅</strong></td><td>&gt;1%</td><td>&gt;2%</td><td>Lab (quarterly)</td></tr>
-        <tr><td><strong>K₂O</strong></td><td>&gt;1%</td><td>&gt;2%</td><td>Lab (quarterly)</td></tr>
-        <tr><td><strong>C/N Ratio</strong></td><td>10–20:1</td><td>10–15:1</td><td>Lab (quarterly)</td></tr>
-        <tr><td><strong>Heavy Metals</strong></td><td>Below threshold</td><td>Jauh di bawah threshold</td><td>Lab (setiap 6 bulan)</td></tr>
+        <tr><td><strong>Moisture</strong></td><td>&lt;50%</td><td>&lt;35%</td><td>Moisture meter</td></tr>
+        <tr><td><strong>C-Organic</strong></td><td>&gt;12%</td><td>&gt;20%</td><td>Lab (per 3 bulan)</td></tr>
+        <tr><td><strong>N Total</strong></td><td>&gt;1%</td><td>&gt;2%</td><td>Lab</td></tr>
+        <tr><td><strong>C/N Ratio</strong></td><td>10–20:1</td><td>10–15:1</td><td>Lab</td></tr>
+        <tr><td><strong>Warna</strong></td><td>Hitam pekat</td><td>Hitam pekat merata</td><td>Visual</td></tr>
+        <tr><td><strong>Tekstur</strong></td><td>Granular halus</td><td>Lolos mesh 5mm &gt;90%</td><td>Ayak</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 9. TROUBLESHOOTING -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header page-break" id="troubleshoot">
-    <div class="section-number">9</div>
-    <div>
-      <div class="section-title">Troubleshooting</div>
-      <div class="section-desc">Diagnosa & solusi masalah umum</div>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Problem</th><th>Gejala</th><th>Kemungkinan Penyebab</th><th>Solusi</th></tr></thead>
+  <section>
+    <h2>Troubleshooting Cepat</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Masalah</th><th>Gejala</th><th>Solusi</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Mortalitas Tinggi</strong><br><small>(&gt;20%)</small></td>
-          <td>Banyak cacing mati, bau busuk, cacing kabur ke dinding tray</td>
-          <td>pH extreme, chemical toxic, ammonia, overwatering, suhu &gt;35°C</td>
-          <td>
-            ✦ Evacuate cacing ke media aman (100% kotoran sapi)<br>
-            ✦ Ukur pH: &lt;6 → tambah kapur; &gt;8 → tambah sulfur<br>
-            ✦ Turunkan ratio sludge ke 25% di batch berikutnya
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Cacing Tidak Makan</strong></td>
-          <td>Media tidak berkurang, cacing kurus, tidak ada burrow</td>
-          <td>Media padat, C/N rendah, suhu rendah, stress aklimatisasi</td>
-          <td>
-            ✦ Aduk lembut + tambah sawdust (improve aerasi)<br>
-            ✦ Tambah kotoran sapi (carbon source)<br>
-            ✦ Beri waktu 2–3 minggu (jangan ganggu)
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Reproduksi Lambat</strong></td>
-          <td>Kokon &lt;20/kg setelah 2 bulan, populasi stagnant</td>
-          <td>Nutrisi rendah, overcrowding, suhu suboptimal, moisture rendah</td>
-          <td>
-            ✦ Boost protein: tambah 5% tepung kedelai ke media<br>
-            ✦ Split ke tray baru (kurangi density)<br>
-            ✦ Maintain 24–28°C dan moisture 70–75%
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Kascing Berbau Busuk</strong></td>
-          <td>Bau sulfit/busuk (bukan earthy), warna hijau/abu</td>
-          <td>Kondisi anaerob, overwatering, terlalu padat</td>
-          <td>
-            ✦ Aduk media (aerasi paksa)<br>
-            ✦ Tambah sawdust (absorb air + carbon)<br>
-            ✦ Buka cover 12–24 jam
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Semut Menyerang</strong></td>
-          <td>Koloni semut di tray, cacing terganggu</td>
-          <td>Media terlalu kering, lokasi kaki tray tidak terlindung</td>
-          <td>
-            ✦ Taruh kaki tray di mangkok berisi air (moat)<br>
-            ✦ Naikkan moisture media<br>
-            ✦ Spray air kapur di sekitar area (bukan media)
-          </td>
-        </tr>
+        <tr><td><strong>Mortalitas tinggi (&gt;20%)</strong></td><td>Cacing mati/lemas, bau busuk, kabur ke pinggir</td><td>Turunkan sludge ratio ke 25%, pindah ke media aman (kotoran sapi 100%)</td></tr>
+        <tr><td><strong>Cacing tidak makan</strong></td><td>Media tidak berkurang, cacing kurus</td><td>Tambah sawdust (improve aerasi), tunggu 2–3 minggu adaptasi</td></tr>
+        <tr><td><strong>Kascing bau busuk</strong></td><td>Bau sulfit, warna hijau/abu</td><td>Overwatering atau anaerob — aerasi, tambah sawdust</td></tr>
+        <tr><td><strong>Reproduksi lambat</strong></td><td>Kokon &lt;20/kg setelah 2 bulan</td><td>Maintain suhu 24–28°C, moisture 70–75%, split ke biopond baru</td></tr>
+        <tr class="highlight-row"><td><strong>⛔ Stop produksi jika:</strong></td><td colspan="2">Mortalitas &gt;50% dalam 1 minggu, atau cacing deformasi, atau bau chemical kuat dari media</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <div class="card card-red">
-    <h3 style="margin-top:0;color:#991b1b">⛔ Red Flags — STOP Production Immediately</h3>
-    <ul>
-      <li>Mortalitas &gt;50% dalam 1 minggu → media toxic, jangan lanjut</li>
-      <li>Cacing deformasi / tidak normal → chemical contamination berat</li>
-      <li>Hasil lab kascing: heavy metals &gt;10× threshold → sludge tidak aman</li>
-      <li>Bau chemical kuat dari media (bukan bau organik) → sludge contaminated</li>
-    </ul>
-    <p style="margin:10px 0 0;font-size:12px;color:var(--earth-600)">Jika terjadi red flag: evacuate cacing, ambil sample media untuk uji lab, turunkan ratio sludge drastis di batch berikutnya.</p>
-  </div>
+</div>
+</div>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 10. PILOT PLAN -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="pilot">
-    <div class="section-number">10</div>
-    <div>
-      <div class="section-title">Pilot Plan 3 Bulan</div>
-      <div class="section-desc">Roadmap uji coba sebelum scale-up komersial</div>
-    </div>
-  </div>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TAB 3 — KAPASITAS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-kapasitas" class="tab-panel">
+<div class="wrap">
 
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 1–2</div>
-      <div class="tl-title">Persiapan & Setup</div>
-      <div class="tl-body">Beli bibit E. fetida 3 kg (Rp 210.000), setup 5 tray + rak besi, stock material (kotoran sapi, sawdust), siapkan tools. Mix 4 batch uji coba (ratio A/B/C/D) masing-masing 10 kg. Pre-composting 5–7 hari.</div>
+  <section>
+    <h2>Spesifikasi 96 Biopond</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">Jumlah Biopond</div><div class="kpi-val">96</div><div class="kpi-sub">Unit dialihfungsikan dari BSF</div></div>
+      <div class="kpi"><div class="kpi-label">Ukuran per Unit</div><div class="kpi-val" style="font-size:16px">170×90</div><div class="kpi-sub">cm = 1.53 m² per biopond</div></div>
+      <div class="kpi"><div class="kpi-label">Total Luas</div><div class="kpi-val">146.9</div><div class="kpi-sub">m² total area aktif</div></div>
+      <div class="kpi"><div class="kpi-label">Media per Biopond</div><div class="kpi-val">~151</div><div class="kpi-sub">kg (kedalaman 22 cm)</div></div>
+      <div class="kpi"><div class="kpi-label">Biomass Target</div><div class="kpi-val">1.469</div><div class="kpi-sub">kg cacing (density 10 kg/m²)</div></div>
+      <div class="kpi"><div class="kpi-label">Sludge Absorbed/hari</div><div class="kpi-val">918</div><div class="kpi-sub">kg/hari saat full operation</div></div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 3–4</div>
-      <div class="tl-title">Introduksi Cacing + Small Batch Test</div>
-      <div class="tl-body">Introduksi cacing ke semua batch. Monitor ketat mortalitas, aktivitas makan, dan kokon. <strong>Decision Point Week 4:</strong> Batch C survival &gt;85% → lanjut scale-up. Mortalitas &gt;30% → turunkan ratio.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 5–8</div>
-      <div class="tl-title">Scale-Up (Jika Batch C Sukses)</div>
-      <div class="tl-body">Naikkan ke 100 kg/batch (2–3 tray). Jalankan formula terbaik dari test batch. Mulai tracking: berat cacing, kokon count, media consumption. Top feeding mulai minggu 5.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 9–12</div>
-      <div class="tl-title">Harvest & Evaluasi</div>
-      <div class="tl-body">Harvest kascing pertama. Uji lab kascing (NPK + heavy metals). Hitung yield ratio aktual. <strong>GO/NO-GO decision</strong> untuk full commercial scale. Dokumentasi seluruh data untuk business plan.</div>
-    </div>
-  </div>
+  </section>
 
-  <h3>Budget Pilot 3 Bulan</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Item</th><th>Qty</th><th>Biaya</th><th>Keterangan</th></tr></thead>
+  <section>
+    <h2>Gap Analysis: Target vs Kapasitas</h2>
+    <div class="box box-amber"><strong>⚠️ Sistem yang Dipakai: Continuous Top-Feeding (Layering)</strong>
+    Cacing selalu ada di biopond. Setiap hari, 10 biopond mendapat layer media baru (5 cm). Throughput = fungsi dari biomass cacing × feed rate. Untuk mencapai 800–1.500 kg/hari, butuh populasi cacing yang besar — ini dicapai melalui breeding natural selama 10–18 bulan.</div>
+
+    <div class="tbl"><table>
+      <thead><tr><th>Kondisi Operasional</th><th>Biomass Cacing</th><th>Sludge Diserap/hari</th><th>vs 800 kg</th><th>vs 1.500 kg</th></tr></thead>
       <tbody>
-        <tr><td>Bibit Eisenia fetida</td><td>3 kg</td><td>Rp 210.000</td><td>CV. Al-Baqarah Farm Lembang</td></tr>
-        <tr><td>Tools &amp; alat ukur</td><td>set</td><td>Rp 1.360.000</td><td>One-time, lihat daftar Section 5</td></tr>
-        <tr><td>Tray plastik/kayu (DIY)</td><td>5 pcs</td><td>Rp 200.000</td><td>Atau gunakan ember/wadah bekas</td></tr>
-        <tr><td>Kotoran sapi (3 bulan)</td><td>240 kg</td><td>Rp 60.000</td><td>Beli bertahap dari peternak lokal</td></tr>
-        <tr><td>Sawdust / sekam padi</td><td>60 kg</td><td>Rp 30.000</td><td>Toko bahan bangunan / RPA</td></tr>
-        <tr><td>Uji lab kascing (1x)</td><td>1 sample</td><td>Rp 300.000</td><td>NPK + heavy metals (lab pertanian)</td></tr>
-        <tr style="background:#f0fdf4;"><td><strong>TOTAL PILOT</strong></td><td></td><td><strong>~Rp 2.160.000</strong></td><td>3 bulan, full data untuk business plan</td></tr>
+        <tr><td>Awal pilot — 2.5 kg/m²</td><td>367 kg</td><td>138 kg/hari</td><td><span class="bad">❌ 17%</span></td><td><span class="bad">❌ 9%</span></td></tr>
+        <tr><td>Bulan 4 — 5 kg/m²</td><td>734 kg</td><td>275 kg/hari</td><td><span class="bad">❌ 34%</span></td><td><span class="bad">❌ 18%</span></td></tr>
+        <tr><td>Bulan 8 — 7.5 kg/m²</td><td>1.102 kg</td><td>413 kg/hari</td><td><span class="warn">⚠️ 52%</span></td><td><span class="bad">❌ 28%</span></td></tr>
+        <tr class="win-row"><td>⭐ Optimal — 10 kg/m² (feed 1.25)</td><td>1.469 kg</td><td><strong>918 kg/hari</strong></td><td><span class="ok">✅ 115%</span></td><td><span class="warn">⚠️ 61%</span></td></tr>
+        <tr class="highlight-row"><td>Max — 15 kg/m² (feed 1.25)</td><td>2.203 kg</td><td>1.377 kg/hari</td><td><span class="ok">✅ 172%</span></td><td><span class="warn">⚠️ 92%</span></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 11. EXPECTED YIELD -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="yield">
-    <div class="section-number">11</div>
-    <div>
-      <div class="section-title">Expected Yield</div>
-      <div class="section-desc">Proyeksi output berdasarkan literatur ilmiah</div>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Skala</th><th>Input/bulan</th><th>Kascing/bulan</th><th>Cacing Surplus</th><th>Est. Revenue</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Pilot</strong></td>
-          <td>500 kg sludge mix</td>
-          <td>125–175 kg</td>
-          <td>5–10 kg</td>
-          <td>Rp 100.000–200.000/bulan</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Small Commercial</strong></td>
-          <td>1 ton sludge mix</td>
-          <td>250–350 kg</td>
-          <td>15–30 kg</td>
-          <td>Rp 300.000–1.000.000/bulan</td>
-        </tr>
-        <tr>
-          <td><strong>Full Scale</strong></td>
-          <td>5 ton sludge mix</td>
-          <td>1.250–1.750 kg</td>
-          <td>75–150 kg</td>
-          <td>Rp 2.000.000–6.000.000/bulan</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="highlight highlight-green">
-    <strong>📈 Catatan Yield:</strong>
-    Revenue di atas belum termasuk nilai limbah processing fee (jika Garudafood mau bayar untuk pengolahan sludge mereka). 
-    Revenue kascing bisa 3–10× lipat jika dijual retail (bukan curah) dengan packaging branding InsTech.
-    Leachate (air kascing) sebagai produk ketiga belum dihitung.
-    <br><br>
-    <strong>Business Plan detail (modal awal, proyeksi ROI, break-even) akan disusun di dokumen terpisah setelah data pilot tersedia.</strong>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 12. PRE-TREATMENT TRICHODERMA & EM4 -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header page-break" id="pretreatment">
-    <div class="section-number">12</div>
-    <div>
-      <div class="section-title">Pre-Treatment Sludge: Trichoderma & EM4</div>
-      <div class="section-desc">Bioaktivasi sebelum cacing masuk → proses lebih cepat, kualitas kascing lebih baik</div>
-    </div>
-  </div>
-
-  <div class="highlight highlight-green">
-    <strong>🔬 Mengapa Pre-Treatment Penting untuk Sludge Garudafood?</strong>
-    Sludge WWTP food processing cenderung memiliki senyawa yang sulit didegradasi, chemical WWTP, dan C/N ratio yang tidak ideal.
-    Pre-treatment dengan <strong>Trichoderma</strong> (fungi pengurai selulosa/lignin) dan <strong>EM4</strong> (konsorsium mikroorganisme)
-    akan <em>mendekonstruksi</em> molekul kompleks dan menstabilkan parameter kimia <strong>sebelum cacing masuk</strong> —
-    sehingga media lebih palatable, aman, dan efisien dicerna cacing. Riset menunjukkan kombinasi Trichoderma + cacing
-    menghasilkan kascing berkualitas lebih tinggi dibanding cacing saja.
-  </div>
-
-  <h3>12.1 — Trichoderma: Agen Pengurai Lignin & Selulosa</h3>
-
-  <div class="card-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Spesies Paling Efektif</div>
-      <div class="kpi-value" style="font-size:16px">T. harzianum</div>
-      <div class="kpi-sub">Lebih efisien dari T. viride untuk composting (studi perbandingan 2023)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Dosis Inokulasi</div>
-      <div class="kpi-value" style="font-size:16px">1%</div>
-      <div class="kpi-sub">Per berat material (w/w). Atau 0.5% Trichoderma + 0.5% media lain (kombinasi)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Durasi Pre-Decomposition</div>
-      <div class="kpi-value" style="font-size:16px">14–30 hari</div>
-      <div class="kpi-sub">Sebelum cacing dimasukkan. Min 10 hari untuk sludge food processing</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Penurunan C/N Ratio</div>
-      <div class="kpi-value" style="font-size:16px">−33%</div>
-      <div class="kpi-sub">Kombinasi T. harzianum + E. fetida + cow dung vs tanpa Trichoderma</div>
-    </div>
-  </div>
-
-  <h4>Mekanisme Kerja Trichoderma pada Sludge</h4>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Aksi Trichoderma</th><th>Mekanisme</th><th>Dampak untuk Cacing</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>Degradasi selulosa</strong></td>
-          <td>Enzim cellulase memecah rantai selulosa panjang jadi gula sederhana</td>
-          <td>Media lebih mudah dicerna cacing</td>
-        </tr>
-        <tr>
-          <td><strong>Degradasi lignin</strong></td>
-          <td>Enzim ligninase memecah struktur aromatic lignin yang resisten</td>
-          <td>Fibrous material lunak, cacing bisa makan lebih cepat</td>
-        </tr>
-        <tr>
-          <td><strong>Penurunan C/N Ratio</strong></td>
-          <td>Karbon dilepas sebagai CO₂ saat metabolisme, nitrogen dimineralisasi</td>
-          <td>C/N mendekati range optimal 18–25 sebelum cacing masuk</td>
-        </tr>
-        <tr>
-          <td><strong>Peningkatan MBC</strong></td>
-          <td>Microbial Biomass Carbon naik → aktivitas mikroba meningkat</td>
-          <td>Lebih banyak "pre-digested" food untuk cacing</td>
-        </tr>
-        <tr>
-          <td><strong>Biocontrol pathogen</strong></td>
-          <td>Trichoderma antagonis terhadap fungi pathogen (Fusarium dll)</td>
-          <td>Media lebih aman untuk cacing (tidak terkontaminasi pathogen berbahaya)</td>
-        </tr>
-        <tr>
-          <td><strong>Peningkatan CEC</strong></td>
-          <td>Humifikasi berjalan lebih cepat → exchange sites terbuka</td>
-          <td>Kascing final memiliki CEC lebih tinggi → kualitas pupuk lebih baik</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="highlight highlight-blue">
-    <strong>📊 Bukti Ilmiah: Trichoderma harzianum + Eisenia fetida + Cow Dung (Studi 2023)</strong>
-    Treatment terbaik (T4): Paddy straw + cow dung + E. fetida + T. harzianum
-    <br>→ TOC turun 34.37% (tertinggi dibanding semua treatment)
-    <br>→ C/N ratio turun 33.1% dibanding kontrol
-    <br>→ Peningkatan N: 0.87%, P: 0.47%, K: 2.66%
-    <br>→ Nutrisi microelemen (Cu, Fe, Zn) juga meningkat signifikan
-    <br><strong>Kesimpulan riset: kombinatorial Trichoderma + cacing adalah strategi terbaik untuk dekomposisi cepat dengan kualitas kascing tertinggi.</strong>
-  </div>
-
-  <h3>12.2 — EM4: Konsorsium Mikroorganisme Efektif</h3>
-
-  <div class="card card-blue">
-    <h4 style="margin-top:0;margin-bottom:12px">Kandungan EM4 (Effective Microorganism 4)</h4>
-    <div class="card-grid" style="margin:0">
-      <div>
-        <strong>🦠 Bakteri Asam Laktat</strong><br>
-        <small>Lactobacillus spp. — fermentasi organik, suppres pathogen, stabilisasi pH</small>
+  <section>
+    <h2>Verdict</h2>
+    <div class="cmp">
+      <div class="cmp-box cmp-g">
+        <h4>✅ Target 800 kg/hari — CUKUP</h4>
+        <ul>
+          <li><span>✅</span> 96 biopond bisa serap <strong>918 kg/hari</strong> di density optimal</li>
+          <li><span>✅</span> Hanya butuh 84 biopond → ada buffer 12 unit</li>
+          <li><span>✅</span> Headroom 15% (918 vs 800 kg)</li>
+          <li><span>⏳</span> Syarat: density 10 kg/m² → 10–12 bulan breeding</li>
+        </ul>
       </div>
-      <div>
-        <strong>🌿 Bakteri Fotosintetik</strong><br>
-        <small>Rhodopseudomonas spp. — fiksasi nitrogen, produksi asam amino</small>
-      </div>
-      <div>
-        <strong>🍄 Ragi / Yeast</strong><br>
-        <small>Saccharomyces spp. — fermentasi, produksi enzim, anti-patogen</small>
-      </div>
-      <div>
-        <strong>🌱 Actinomycetes</strong><br>
-        <small>Streptomyces spp. — degradasi bahan organik kompleks, antibiotik alami</small>
+      <div class="cmp-box cmp-r">
+        <h4>❌ Target 1.500 kg/hari — TIDAK CUKUP</h4>
+        <ul>
+          <li><span>❌</span> Maks 96 biopond hanya <strong>1.377 kg/hari</strong></li>
+          <li><span>❌</span> Butuh 157 biopond (kurang 61 unit)</li>
+          <li><span>💡</span> Gap 8% bisa ditutup: naikkan sludge ratio 50%→60%</li>
+          <li><span>💡</span> Atau tambah kedalaman media 22→30 cm</li>
+        </ul>
       </div>
     </div>
-  </div>
+    <div class="box box-blue"><strong>💡 Rekomendasi: Start dengan target 800 kg/hari.</strong>
+    Setelah pilot sukses dan pre-treatment terbukti, naikkan sludge ratio ke 55–60% untuk mendekati 1.500 kg/hari tanpa investasi tambahan biopond.</div>
+  </section>
 
-  <h4>Efek EM4 pada Pre-Composting Sludge</h4>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Parameter</th><th>Tanpa EM4</th><th>EM4 10 ml/kg</th><th>EM4 15 ml/kg</th><th>Efek</th></tr></thead>
+  <section>
+    <h2>Ramp-Up Timeline</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Periode</th><th>Biopond Aktif</th><th>Biomass Cacing</th><th>Sludge/hari</th><th>% Target 800 kg</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Kecepatan Dekomposisi</strong></td>
-          <td>Baseline</td>
-          <td>+25–35% lebih cepat</td>
-          <td>Lebih cepat lagi (hari ke-3 sudah thermophilic)</td>
-          <td><span class="status-ok">✅ Signifikan</span></td>
-        </tr>
-        <tr>
-          <td><strong>Suhu Thermophilic</strong></td>
-          <td>Lebih lama mencapai peak</td>
-          <td>Peak hari ke-5</td>
-          <td>Peak hari ke-3</td>
-          <td><span class="status-ok">✅ Lebih cepat</span></td>
-        </tr>
-        <tr>
-          <td><strong>C-Organic Akhir</strong></td>
-          <td>Lebih tinggi (sisa tidak terurai)</td>
-          <td>↓ lebih banyak (CO₂ dilepas)</td>
-          <td>↓↓ terbesar</td>
-          <td><span class="status-ok">✅ Dekomposisi lebih tuntas</span></td>
-        </tr>
-        <tr>
-          <td><strong>Nitrogen Total</strong></td>
-          <td>Baseline</td>
-          <td>↑ Nitrifikasi lebih aktif</td>
-          <td>↑↑ Tertinggi</td>
-          <td><span class="status-ok">✅ N lebih banyak tersedia</span></td>
-        </tr>
-        <tr>
-          <td><strong>Fosfor</strong></td>
-          <td>Baseline</td>
-          <td>↑ Phosphate-solubilizing bacteria aktif</td>
-          <td>↑↑</td>
-          <td><span class="status-ok">✅ P lebih available</span></td>
-        </tr>
-        <tr>
-          <td><strong>pH</strong></td>
-          <td>Fluktuatif</td>
-          <td>Stabil lebih cepat ke netral (7–7.5)</td>
-          <td>Stabil lebih cepat</td>
-          <td><span class="status-ok">✅ pH lebih cepat ideal untuk cacing</span></td>
-        </tr>
-        <tr>
-          <td><strong>C/N Ratio</strong></td>
-          <td>Baseline</td>
-          <td>↓ Lebih cepat</td>
-          <td>↓↓ Terendah (terbaik)</td>
-          <td><span class="status-ok">✅ Matang lebih cepat</span></td>
-        </tr>
+        <tr><td><strong>Bulan 1–3 (Pilot)</strong></td><td>20–30</td><td>3–8 kg</td><td>10–25 kg</td><td>1–3%</td></tr>
+        <tr><td><strong>Bulan 4–6 (Scale-up)</strong></td><td>50–70</td><td>30–80 kg</td><td>90–200 kg</td><td>11–25%</td></tr>
+        <tr><td><strong>Bulan 7–9 (Expanding)</strong></td><td>96</td><td>200–500 kg</td><td>400–700 kg</td><td>50–88%</td></tr>
+        <tr class="win-row"><td><strong>Bulan 10–12 (Full)</strong></td><td>96</td><td>800–1.470 kg</td><td><strong>700–918 kg</strong></td><td><strong>88–115%</strong></td></tr>
+        <tr style="background:var(--g950);color:white"><td><strong>Bulan 13+ (Optimal)</strong></td><td>96+</td><td>1.470–2.200 kg</td><td>918–1.377 kg</td><td><strong>115–172%</strong></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+    <div class="box box-amber"><strong>⚠️ Fase Transisi 6–12 Bulan</strong>
+    Selama ramp-up, kapasitas masih jauh di bawah 800 kg/hari. Plan interim: tetap pakai BSF sebagian, atau negosiasi dengan Garudafood untuk jadwal pengiriman sludge bertahap sesuai kapasitas aktual.</div>
+  </section>
 
-  <div class="highlight highlight-amber">
-    <strong>⚠️ Catatan Penting: Dosis EM4 Optimal = 10 ml/kg material</strong>
-    Berdasarkan studi Universitas Diponegoro (2023), dosis 10 ml/kg menghasilkan kascing terbaik (pH 7, C-organic 19.83%, N 1.34%, C/N 14.85 — sesuai SNI).
-    Dosis 15 ml/kg mempercepat proses tapi tidak selalu menghasilkan kualitas yang lebih baik (bisa over-decompose jika moisture tidak dikontrol).
-    <strong>Rekomendasi untuk sludge Garudafood: EM4 10 ml per kg material selama pre-composting 14 hari.</strong>
-  </div>
+</div>
+</div>
 
-  <h3>12.3 — SOP Pre-Treatment: Trichoderma + EM4 Kombinasi</h3>
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TAB 4 — TIM & OPS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-tim" class="tab-panel">
+<div class="wrap">
 
-  <div class="formula">
-    <span class="comment"># Formula Pre-Treatment Sebelum Vermicomposting (per 100 kg batch)</span><br>
-    <br>
-    BAHAN:<br>
-    50 kg  Sludge WWTP Garudafood<br>
-    40 kg  Kotoran Sapi (fresh)<br>
-    10 kg  Sawdust / Sekam<br>
-    ──────────────────────────────────────────────────────<br>
-    AKTIVATOR:<br>
-    1%     Trichoderma harzianum          <span class="comment"># = 1 kg per 100 kg (atau 100 gram konsentrat)</span><br>
-    10 ml/kg EM4                          <span class="comment"># = 1.000 ml (1 liter) per 100 kg material</span><br>
-    ──────────────────────────────────────────────────────<br>
-    LARUTAN APLIKASI:<br>
-    Larutkan EM4 1 liter + gula merah 100g + air 5 liter<br>
-    Fermentasi 24 jam (tutup rapat) → aktifkan mikroba<br>
-    Campurkan Trichoderma ke larutan EM4 aktif<br>
-    Semprotkan merata ke seluruh campuran material
-  </div>
+  <section>
+    <h2>Maggot BSF vs Cacing: Perbandingan Tenaga Kerja</h2>
+    <div class="box box-green"><strong>🎯 Key Insight: Cacing jauh lebih hemat SDM</strong>
+    BSF membutuhkan intensitas kerja tinggi karena panen prepupa tiap 3–5 hari, pemangkasan media rutin, dan sortir yang labor-intensive. Cacing dengan metode layering hampir <em>semi-otomatis</em> — cacing migrasi sendiri, tidak ada sortir harian, harvest hanya tiap 10–12 minggu.</div>
 
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <div class="step-title">Persiapan Larutan Aktivator (Day −1)</div>
-        <div class="step-body">Larutkan 1 liter EM4 + 100 gram gula merah + 5 liter air. Tutup rapat, simpan di tempat gelap 24 jam. Campuran akan berbau asam-manis (fermentasi laktat berjalan). Pada hari yang sama, siapkan Trichoderma harzianum (tersedia di toko pertanian dalam bentuk granul/cair).</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <div class="step-title">Mixing Material + Inokulasi (Day 0)</div>
-        <div class="step-body">Campurkan 50 kg sludge + 40 kg kotoran sapi + 10 kg sawdust. Tambahkan 1 kg Trichoderma harzianum, aduk rata. Semprotkan larutan EM4 aktif (5 liter) ke seluruh permukaan sambil diaduk. Moisture check: target 65-70%.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <div class="step-title">Pre-Composting Phase (Day 1–14)</div>
-        <div class="step-body">
-          Taruh di area pre-composting (bukan tray cacing). Tutup dengan terpal (biarkan ada sirkulasi udara minimal).
-          <br>• <strong>Day 1–5:</strong> Fase thermophilic — suhu naik 45–60°C (ini normal dan bagus, membunuh pathogen). Aduk setiap 4 hari.
-          <br>• <strong>Day 6–10:</strong> Suhu mulai turun → fungi Trichoderma aktif bekerja, media mulai lunak.
-          <br>• <strong>Day 11–14:</strong> Suhu mendekati ambient → siap untuk introduksi cacing. pH check: target 6.5–7.5.
-        </div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <div class="step-title">Final Check Sebelum Cacing (Day 14)</div>
-        <div class="step-body">✅ Suhu &lt;30°C &nbsp;|&nbsp; ✅ pH 6.5–7.5 &nbsp;|&nbsp; ✅ Moisture 65–75% &nbsp;|&nbsp; ✅ Bau earthy (tidak menyengat ammonia) &nbsp;|&nbsp; ✅ Tekstur remah (tidak gumpalan keras). Jika semua OK → pindahkan ke tray cacing dan introduksi cacing sesuai SOP Section 6.</div>
-      </div>
-    </div>
-  </div>
-
-  <h3>12.4 — Perbandingan: Dengan vs Tanpa Pre-Treatment</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Parameter</th><th>Tanpa Pre-Treatment</th><th>Dengan Trichoderma + EM4</th><th>Keunggulan</th></tr></thead>
+    <div class="tbl"><table>
+      <thead><tr><th>Aspek</th><th>Maggot BSF</th><th>Cacing (Layering)</th><th>Pemenang</th></tr></thead>
       <tbody>
-        <tr><td><strong>Waktu Total Proses</strong></td><td>8–12 minggu</td><td><strong>6–8 minggu</strong></td><td>Hemat 2–4 minggu (25–33% lebih cepat)</td></tr>
-        <tr><td><strong>Risiko Mortalitas Cacing</strong></td><td>Lebih tinggi (chemical belum terdilusi)</td><td><strong>Lebih rendah</strong> (pathogen mati di thermophilic)</td><td>Survival rate lebih baik</td></tr>
-        <tr><td><strong>Kualitas Kascing (NPK)</strong></td><td>Baseline</td><td><strong>+30–50% NPK lebih tinggi</strong></td><td>Nilai jual kascing lebih tinggi</td></tr>
-        <tr><td><strong>C/N Ratio Akhir</strong></td><td>15–20:1</td><td><strong>10–15:1</strong></td><td>Kascing lebih matang &amp; stabil</td></tr>
-        <tr><td><strong>Pathogen di Kascing</strong></td><td>Masih mungkin ada residu</td><td><strong>Dieliminasi &gt;99%</strong> di fase thermophilic</td><td>Kascing lebih aman untuk pertanian</td></tr>
-        <tr><td><strong>Palatabilitas Media</strong></td><td>Cacing perlu adaptasi lebih lama</td><td><strong>Langsung makan aktif</strong> (media sudah pre-digested)</td><td>Reproduksi mulai lebih cepat</td></tr>
-        <tr><td><strong>Biaya Tambahan</strong></td><td>Rp 0</td><td><strong>Rp 50.000–150.000/batch</strong> (EM4 + Trichoderma)</td><td>ROI positif dari kualitas kascing</td></tr>
+        <tr><td><strong>Frekuensi Panen</strong></td><td>Tiap 3–5 hari (prepupa)</td><td>Tiap 10–12 minggu/biopond (rotating)</td><td>🐛 Cacing (lebih ringan)</td></tr>
+        <tr><td><strong>Pemangkasan/Sortir</strong></td><td>Tiap 3 hari — sortir prepupa dari media manual, intensive</td><td>❌ Tidak ada — cacing migrasi sendiri</td><td>🐛 Cacing (0 sortir)</td></tr>
+        <tr><td><strong>Pemberian Pakan</strong></td><td>Tiap hari semua biopond</td><td>Layering 10 biopond/hari, rotating</td><td>🐛 Cacing (lebih efisien)</td></tr>
+        <tr><td><strong>Suhu kerja</strong></td><td>🔥 40–50°C dalam site — tidak nyaman</td><td>❄️ &lt;30°C — sejuk, nyaman</td><td>🐛 Cacing</td></tr>
+        <tr><td><strong>Siklus produksi</strong></td><td>14–18 hari (cepat)</td><td>10–12 minggu (tapi continuous)</td><td>🪲 BSF lebih cepat</td></tr>
+        <tr><td><strong>Revenue per siklus</strong></td><td>Prepupa Rp 3–5rb/kg, maggot kering Rp 8–12rb/kg</td><td>Cacing Rp 20rb/kg + Kascing Rp 2–5rb/kg</td><td>🐛 Cacing (lebih tinggi)</td></tr>
+        <tr><td><strong>Cocok untuk sludge 75% moisture</strong></td><td>❌ Tidak bisa — larva mati</td><td>✅ Ideal</td><td>🐛 Cacing</td></tr>
+        <tr style="background:#fff7ed"><td><strong>Tenaga Kerja (96 biopond)</strong></td><td><strong>7–8 orang</strong></td><td><strong>1–2 orang</strong></td><td>🏆🏆 Cacing (hemat 6 orang)</td></tr>
+        <tr style="background:#fff7ed"><td><strong>Biaya SDM/bulan</strong></td><td>Rp 25–29 juta</td><td>Rp 7–10 juta</td><td>🏆🏆 Hemat Rp 15–20 juta/bulan</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 13. KAPASITAS CACING PER M2 -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="kapasitas">
-    <div class="section-number">13</div>
-    <div>
-      <div class="section-title">Kapasitas Cacing per m² & Feed Rate</div>
-      <div class="section-desc">Stocking density optimal, throughput pakan, dan proyeksi kapasitas site Garudafood</div>
-    </div>
-  </div>
-
-  <h3>13.1 — Stocking Density (Kepadatan Tebar Cacing)</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Density Level</th><th>Kg/m²</th><th>Kondisi</th><th>Hasil</th><th>Rekomendasi</th></tr></thead>
+  <section>
+    <h2>Workload Analysis — Cacing 96 Biopond</h2>
+    <div class="box box-blue"><strong>Metode: Layering (bukan mixing manual)</strong>
+    Sludge + kotoran sapi + sawdust cukup dilayer bertahap di atas media existing. Tidak perlu diaduk. Trichoderma + EM4 disemprotkan saat menambahkan layer baru. Ini menghilangkan aktivitas inspection rutin, penyiraman massal, dan mixing berat.</div>
+    <div class="tbl"><table>
+      <thead><tr><th>Aktivitas</th><th>Detail</th><th>Durasi/hari</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Minimum Start</strong></td>
-          <td>2.5 kg/m²</td>
-          <td>Reproduksi mulai aktif. Di bawah ini reproduksi terhambat atau berhenti.</td>
-          <td>Populasi lambat berkembang</td>
-          <td>Jangan start di bawah ini</td>
-        </tr>
-        <tr>
-          <td><strong>Optimal Vermicompost</strong></td>
-          <td><strong>1.60 kg/m²</strong></td>
-          <td>Studi biosolids khusus (Ndegwa et al.) — fokus pada kualitas kascing terbaik</td>
-          <td>Kascing paling matang &amp; digested</td>
-          <td>Jika tujuan = kualitas kascing</td>
-        </tr>
-        <tr>
-          <td><strong>Optimal Biomass</strong></td>
-          <td><strong>1.60 kg/m²</strong></td>
-          <td>Sama, feed rate berbeda (1.25 vs 0.75 kg/kg/hari)</td>
-          <td>Biomass cacing tertinggi</td>
-          <td>Jika tujuan = panen cacing maksimal</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>⭐ Komersial (Practical)</strong></td>
-          <td><strong>5–10 kg/m²</strong></td>
-          <td>Most common commercial range. "Split beds" saat density sudah double.</td>
-          <td>Balance antara kascing &amp; biomass</td>
-          <td><strong>Target untuk Garudafood</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Worm Grower (Breeding)</strong></td>
-          <td>5 kg/m²</td>
-          <td>Standard worm grower. Split beds saat populasi double.</td>
-          <td>Doubling setiap 60 hari</td>
-          <td>Jika tujuan = breeding bibit</td>
-        </tr>
-        <tr>
-          <td><strong>Maximum (Active Beds)</strong></td>
-          <td>10–20 kg/m²</td>
-          <td>Mungkin dicapai, tapi reproduksi mulai melambat akibat kompetisi ruang &amp; pakan</td>
-          <td>Produksi kascing tinggi, biomass cacing melambat</td>
-          <td>Hanya untuk vermicompost fokus</td>
-        </tr>
+        <tr><td><strong>🍽️ Layering / Top Feeding</strong></td><td>10 biopond/hari mendapat layer 5 cm (rotating 96/10 ≈ tiap 10 hari). Tumpuk sludge-kotopsa-sawdust langsung, semprotkan EM4+Trichoderma.</td><td>100 menit</td></tr>
+        <tr><td><strong>🚛 Transport Material</strong></td><td>Angkut sludge dari outlet WWTP + kotoran sapi + sawdust ke area biopond. Dengan gerobak sorong, cukup 2–3 trip/hari.</td><td>45 menit</td></tr>
+        <tr><td><strong>🌡️ Cek Pre-Treatment Area</strong></td><td>Cek suhu batch yang sedang pre-composting (thermometer stik). Tidak perlu diaduk — hanya monitoring visual + catat suhu.</td><td>20 menit</td></tr>
+        <tr><td><strong>🌿 Harvest Kascing</strong></td><td>1–2 biopond/hari (rotating). Migration method: cacing sudah pindah sendiri. Angkat media, sieve, pindah ke area drying.</td><td>60 menit</td></tr>
+        <tr><td><strong>🐛 Sorting Cacing Jual</strong></td><td>Pisahkan cacing surplus saat harvest, timbang, simpan di wadah media lembab. (3× seminggu ÷ 7 hari)</td><td>15 menit</td></tr>
+        <tr><td><strong>📋 Recording & Admin</strong></td><td>Logbook harian, foto dokumentasi mingguan.</td><td>30 menit</td></tr>
+        <tr class="win-row"><td><strong>TOTAL</strong></td><td><strong>Metode layering — tidak ada mixing berat, tidak ada inspection massal, tidak ada penyiraman manual</strong></td><td><strong>270 menit = 4.5 jam</strong></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+    <div class="kpi-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="kpi"><div class="kpi-label">Total Workload</div><div class="kpi-val">4.5 jam</div><div class="kpi-sub">Per hari, 96 biopond penuh</div></div>
+      <div class="kpi"><div class="kpi-label">Kebutuhan Orang</div><div class="kpi-val">1–2</div><div class="kpi-sub">1 orang cukup, 2 nyaman</div></div>
+      <div class="kpi"><div class="kpi-label">vs BSF</div><div class="kpi-val">−6 org</div><div class="kpi-sub">Hemat Rp 21 jt/bulan SDM</div></div>
+    </div>
+  </section>
 
-  <div class="card card-green">
-    <h4 style="margin-top:0">📐 Cara Baca Stocking Density untuk Site Garudafood</h4>
-    <p>Jika tray ukuran <strong>100 cm × 50 cm = 0.5 m²</strong> per tray:</p>
-    <div class="table-wrap" style="margin:8px 0 0">
-      <table>
-        <thead><tr><th>Density Target</th><th>Cacing per Tray (0.5 m²)</th><th>Total (5 tray = 2.5 m²)</th></tr></thead>
-        <tbody>
-          <tr><td>Minimum (2.5 kg/m²)</td><td>1.25 kg cacing</td><td>6.25 kg cacing</td></tr>
-          <tr style="background:#f0fdf4;"><td><strong>Optimal Start (5 kg/m²)</strong></td><td><strong>2.5 kg cacing</strong></td><td><strong>12.5 kg cacing</strong></td></tr>
-          <tr><td>Peak commercial (10 kg/m²)</td><td>5 kg cacing</td><td>25 kg cacing</td></tr>
-        </tbody>
-      </table>
+  <section>
+    <h2>Struktur Tim per Fase</h2>
+    <div class="card-grid">
+      <div class="role-card"><div class="role">Pilot — Bulan 1–3</div><div class="title">2 Orang</div><ul><li>Supervisor: feeding + recording</li><li>Operator: transport + harvest</li><li>Rp 280.000/hari</li><li><strong>Rp 7.280.000/bulan</strong></li></ul></div>
+      <div class="role-card"><div class="role">Scale-up — Bulan 4–9</div><div class="title">2–3 Orang</div><ul><li>+ Op. B: expand ke 50–70 biopond</li><li>Mulai jual cacing rutin</li><li>Rp 280–420.000/hari</li><li><strong>Rp 7.3–10.9 juta/bulan</strong></li></ul></div>
+      <div class="role-card"><div class="role">Full Op — Bulan 10+</div><div class="title">2–3 Orang</div><ul><li>1 Supervisor + 1–2 Operator</li><li>Atau 2 orang + alat otomasi</li><li>Rp 280–420.000/hari</li><li><strong>Rp 7.3–10.9 juta/bulan</strong></li></ul></div>
     </div>
-    <p style="margin:10px 0 0;font-size:12px;color:var(--earth-600)">
-      Untuk <strong>pilot 3 bulan</strong> dengan bibit awal 3 kg dan 5 tray (2.5 m²): start density = 1.2 kg/m² (di bawah optimal, tapi akan naik secara alami dalam 1–2 bulan). Jika ingin langsung di density optimal, order 12–15 kg bibit.
-    </p>
-  </div>
+    <div class="box box-green"><strong>💡 Efisiensi Alat: Kurangi ke 1 Orang</strong>
+    Dengan <strong>misting system</strong> (Rp 2 juta, otomasi penyiraman) dan <strong>gerobak sorong 2 unit</strong> (Rp 600 ribu), 1 orang bisa handle 96 biopond. ROI alat &lt;2 bulan dari penghematan gaji Rp 140.000/hari.</div>
+  </section>
 
-  <h3>13.2 — Feed Consumption Rate (Kapasitas Makan Cacing)</h3>
-
-  <div class="card-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Konsumsi Pakan Harian (E. fetida)</div>
-      <div class="kpi-value" style="font-size:20px">0.5× BW</div>
-      <div class="kpi-sub">Setengah berat badan per hari. Mampu makan hingga 5× BW/hari di kondisi optimal.</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Feed Rate Optimal (Biosolids Study)</div>
-      <div class="kpi-value" style="font-size:20px">0.75 kg/kg/hari</div>
-      <div class="kpi-sub">Per kg cacing per hari — untuk vermicompost terbaik. 1.25 kg/kg/hari untuk biomass maks.</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Throughput (Rule of Thumb)</div>
-      <div class="kpi-value" style="font-size:20px">1:1</div>
-      <div class="kpi-sub">0.5 kg cacing = proses 0.5 kg pakan/hari → 0.25 kg kascing/hari (50% conversion rate)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Gut Transit Time (ANC)</div>
-      <div class="kpi-value" style="font-size:20px">4.5–6 jam</div>
-      <div class="kpi-sub">Makanan transit dalam usus cacing dalam 4.5 jam (hatchling) hingga 6 jam (adult)</div>
-    </div>
-  </div>
-
-  <h4>Proyeksi Throughput Sludge Berdasarkan Populasi Cacing</h4>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Populasi Cacing</th>
-          <th>Feed Rate 0.75 kg/kg/hari</th>
-          <th>Feed Rate 1.25 kg/kg/hari</th>
-          <th>Kascing Dihasilkan</th>
-          <th>Area (@ 5 kg/m²)</th>
-        </tr>
-      </thead>
+  <section>
+    <h2>Jadwal Kerja Mingguan (2 Orang)</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Hari</th><th>Supervisor</th><th>Operator</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>3 kg</strong> (pilot start)</td>
-          <td>2.25 kg sludge mix/hari</td>
-          <td>3.75 kg/hari</td>
-          <td>~1.1–1.9 kg kascing/hari</td>
-          <td>0.6 m²</td>
-        </tr>
-        <tr>
-          <td><strong>10 kg</strong> (1 bulan post-doubling)</td>
-          <td>7.5 kg/hari</td>
-          <td>12.5 kg/hari</td>
-          <td>~3.75–6.25 kg kascing/hari</td>
-          <td>2 m²</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>25 kg</strong> (target 3 bulan)</td>
-          <td>18.75 kg/hari</td>
-          <td>31.25 kg/hari</td>
-          <td><strong>~9–15.6 kg kascing/hari</strong></td>
-          <td>5 m²</td>
-        </tr>
-        <tr>
-          <td><strong>100 kg</strong> (scale-up 6 bulan)</td>
-          <td>75 kg/hari</td>
-          <td>125 kg/hari</td>
-          <td>~37.5–62.5 kg kascing/hari</td>
-          <td>20 m²</td>
-        </tr>
-        <tr>
-          <td><strong>500 kg</strong> (full commercial)</td>
-          <td>375 kg/hari</td>
-          <td>625 kg/hari</td>
-          <td>~187–312 kg kascing/hari</td>
-          <td>100 m²</td>
-        </tr>
+        <tr><td><strong>Senin</strong></td><td>Layering biopond 1–10 + EM4/Trichoderma</td><td>Transport sludge + kotoran sapi + sawdust</td></tr>
+        <tr><td><strong>Selasa</strong></td><td>Harvest biopond 1–2 (sieve + pindah ke drying)</td><td>Layering biopond 11–20</td></tr>
+        <tr><td><strong>Rabu</strong></td><td>Recording + cek pre-treatment batch + foto</td><td>Transport material + harvest biopond 3–4</td></tr>
+        <tr><td><strong>Kamis</strong></td><td>Layering biopond 21–30 + EM4/Trichoderma</td><td>Packaging kascing kering + sorting cacing jual</td></tr>
+        <tr><td><strong>Jumat</strong></td><td>Harvest biopond 5–6 + weekly report</td><td>Transport material + layering biopond 31–40</td></tr>
+        <tr><td><strong>Sabtu</strong></td><td>Cek semua biopond prioritas (spot check 20 biopond)</td><td>Packaging + persiapan pengiriman cacing ke pengepul</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <div class="highlight highlight-blue">
-    <strong>💡 Artinya untuk Sludge Garudafood:</strong>
-    Jika Garudafood menghasilkan misalnya <strong>500 kg sludge/hari</strong>, maka dibutuhkan populasi cacing sebesar
-    <strong>400–667 kg</strong> (menggunakan feed rate 0.75–1.25 kg/kg/hari).
-    Dengan area budidaya <strong>80–133 m²</strong> (@ 5 kg/m²).
-    <br><br>
-    Ini adalah target jangka panjang (6–12 bulan). Pilot dimulai dari 3 kg cacing → 5 m² area → scale up natural melalui reproduksi.
-  </div>
+</div>
+</div>
 
-  <hr class="divider">
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TAB 5 — BISNIS & ROI -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div id="tab-bisnis" class="tab-panel">
+<div class="wrap">
 
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 14. PERTUMBUHAN & PENAMBAHAN BOBOT CACING -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="growth">
-    <div class="section-number">14</div>
-    <div>
-      <div class="section-title">Pertumbuhan & Penambahan Bobot Cacing saat Makan Sludge</div>
-      <div class="section-desc">Data kuantitatif growth rate, biomass doubling, dan proyeksi populasi</div>
-    </div>
-  </div>
-
-  <h3>14.1 — Perbandingan Growth Rate: Eudrilus vs Eisenia</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Eudrilus eugeniae (ANC)</th>
-          <th>Eisenia fetida</th>
-          <th>Pemenang</th>
-        </tr>
-      </thead>
+  <section>
+    <h2>Modal Awal (CAPEX)</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Item</th><th>Detail</th><th>Biaya</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Growth rate per worm per hari</strong></td>
-          <td><strong>28.8 mg/ekor/hari</strong></td>
-          <td>6.2 mg/ekor/hari</td>
-          <td>🏆 ANC 4.6× lebih cepat</td>
-        </tr>
-        <tr>
-          <td><strong>Weight gain dalam 28 hari</strong></td>
-          <td><strong>820 mg/ekor</strong></td>
-          <td>180 mg/ekor</td>
-          <td>🏆 ANC 4.6× lebih besar</td>
-        </tr>
-        <tr>
-          <td><strong>Max berat per ekor (dewasa)</strong></td>
-          <td><strong>1.116 gram/ekor</strong></td>
-          <td>~0.5–0.8 gram/ekor</td>
-          <td>🏆 ANC lebih besar &amp; berat</td>
-        </tr>
-        <tr>
-          <td><strong>Growth rate per minggu</strong></td>
-          <td><strong>280 mg/ekor/minggu</strong></td>
-          <td>~43 mg/ekor/minggu</td>
-          <td>🏆 ANC jauh lebih produktif</td>
-        </tr>
-        <tr>
-          <td><strong>Biomass doubling time</strong></td>
-          <td><strong>~45–60 hari</strong></td>
-          <td>~60–90 hari</td>
-          <td>🏆 ANC lebih cepat berkembang</td>
-        </tr>
-        <tr>
-          <td><strong>Hatchling per kokon</strong></td>
-          <td>1–2 per kokon</td>
-          <td><strong>3.3 per kokon</strong></td>
-          <td>🏆 Eisenia lebih produktif reproduksi</td>
-        </tr>
-        <tr>
-          <td><strong>Cocoon production per worm</strong></td>
-          <td>~2.8 kokon/ekor/hari</td>
-          <td><strong>21.8 kokon/ekor (total, periode ~6 minggu)</strong></td>
-          <td>🏆 Eisenia lebih banyak kokon</td>
-        </tr>
-        <tr>
-          <td><strong>Survival rate</strong></td>
-          <td>85–90%</td>
-          <td><strong>86.6% hatching success</strong></td>
-          <td>≈ Setara</td>
-        </tr>
-        <tr>
-          <td><strong>Waktu clitellum (dewasa)</strong></td>
-          <td>4 minggu</td>
-          <td><strong>3 minggu</strong></td>
-          <td>🏆 Eisenia lebih cepat matang seksual</td>
-        </tr>
+        <tr><td><strong>Bibit ANC 15 kg</strong></td><td>Eudrilus eugeniae @ Rp 65.000/kg — untuk cepat capai density optimal</td><td>Rp 975.000</td></tr>
+        <tr><td><strong>Tools operasional</strong></td><td>pH meter, moisture meter, thermometer, timbangan, sprayer, sekop, ember, sarung tangan</td><td>Rp 1.360.000</td></tr>
+        <tr><td><strong>Misting system</strong></td><td>Selang + nozzle + timer otomatis — 96 biopond, hemat 1 jam penyiraman/hari</td><td>Rp 2.500.000</td></tr>
+        <tr><td><strong>Molen 120L</strong></td><td>Untuk pre-treatment mixing material batch besar (opsional, bisa mulai manual)</td><td>Rp 4.000.000</td></tr>
+        <tr><td><strong>Gerobak sorong 2 unit</strong></td><td>Transport material &amp; kascing</td><td>Rp 600.000</td></tr>
+        <tr><td><strong>Ayakan screener</strong></td><td>Sieving kascing saat harvest</td><td>Rp 400.000</td></tr>
+        <tr><td><strong>Adaptasi biopond</strong></td><td>Drainage holes, ember leachate, cover mesh 96 unit</td><td>Rp 1.000.000</td></tr>
+        <tr><td><strong>Area pre-treatment</strong></td><td>Terpal, pembatas area, terpal penutup</td><td>Rp 750.000</td></tr>
+        <tr class="win-row"><td><strong>TOTAL CAPEX</strong></td><td><strong>Termasuk otomasi misting</strong></td><td><strong>Rp 11.585.000</strong></td></tr>
+        <tr><td>Minimal (tanpa molen + misting)</td><td>Cukup untuk pilot manual</td><td>Rp 5.085.000</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <div class="compare-grid">
-    <div class="compare-box" style="background:#f0fdf4;border:1px solid #86efac;">
-      <h4 style="color:var(--green-800)">🏆 Eudrilus eugeniae (ANC) — Unggul Biomass</h4>
-      <ul>
-        <li>✅ Pertumbuhan bobot individual 4.6× lebih cepat</li>
-        <li>✅ Ukuran besar → nilai jual per kg lebih tinggi</li>
-        <li>✅ Aktif di iklim tropis (suhu 25–30°C = ideal)</li>
-        <li>✅ Bioremediasi heavy metal lebih superior</li>
-        <li>✅ Pengepul sudah ada (Rp 20.000/kg)</li>
-        <li>✅ Gut transit time lebih cepat (4.5 jam) → throughput lebih tinggi</li>
-      </ul>
-    </div>
-    <div class="compare-box" style="background:#eff6ff;border:1px solid #93c5fd;">
-      <h4 style="color:#1e40af">⚗️ Eisenia fetida — Unggul Reproduksi</h4>
-      <ul>
-        <li>✅ Lebih banyak kokon (lebih cepat expand populasi)</li>
-        <li>✅ Lebih toleran chemical/heavy metal (riset sludge)</li>
-        <li>✅ Hatching success lebih tinggi (86.6%)</li>
-        <li>✅ Clitellum lebih cepat (dewasa lebih awal)</li>
-        <li>✅ Riset untuk WWTP sludge PALING banyak</li>
-        <li>✅ Lebih murah (Rp 60–70rb/kg bibit)</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>14.2 — Proyeksi Populasi & Biomass dari 3 kg Bibit Awal</h3>
-
-  <div class="card card-green">
-    <h4 style="margin-top:0">📈 Proyeksi Natural Breeding (Tanpa Dijual, Semua Diternakkan)</h4>
-    <p style="font-size:12px;color:var(--earth-600);margin-bottom:12px">Asumsi doubling time 60 hari, kondisi optimal (suhu 25-28°C, moisture 70-75%, nutrisi cukup)</p>
-    <div class="table-wrap" style="margin:0">
-      <table>
-        <thead><tr><th>Periode</th><th>Biomass Cacing</th><th>Throughput Sludge/hari</th><th>Area Butuh (5 kg/m²)</th><th>Kascing/bulan (est.)</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Start (bulan 0)</strong></td><td>3 kg</td><td>2.25–3.75 kg/hari</td><td>0.6 m²</td><td>40–70 kg</td></tr>
-          <tr><td><strong>Bulan 2</strong> (1× doubling)</td><td>6 kg</td><td>4.5–7.5 kg/hari</td><td>1.2 m²</td><td>80–140 kg</td></tr>
-          <tr style="background:#f0fdf4;"><td><strong>Bulan 4</strong> (2× doubling)</td><td><strong>12 kg</strong></td><td>9–15 kg/hari</td><td>2.4 m²</td><td>160–280 kg</td></tr>
-          <tr><td><strong>Bulan 6</strong> (3× doubling)</td><td>24 kg</td><td>18–30 kg/hari</td><td>4.8 m²</td><td>320–550 kg</td></tr>
-          <tr><td><strong>Bulan 8</strong> (4× doubling)</td><td>48 kg</td><td>36–60 kg/hari</td><td>9.6 m²</td><td>640–1.100 kg</td></tr>
-          <tr><td><strong>Bulan 10</strong> (5× doubling)</td><td>96 kg</td><td>72–120 kg/hari</td><td>19.2 m²</td><td>1.280–2.200 kg</td></tr>
-          <tr style="background:#052e16;color:white;"><td><strong>Bulan 12</strong> (6× doubling)</td><td><strong>192 kg</strong></td><td>144–240 kg/hari</td><td>38.4 m²</td><td><strong>2.500–4.400 kg kascing</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin:10px 0 0;font-size:12px;color:var(--earth-600)">
-      ⚠️ Proyeksi teoritis — dalam praktik biasanya 60–70% dari angka teoritis karena faktor mortalitas, penjualan cacing, fluktuasi kondisi. Tapi menggambarkan <strong>potensi eksponensial yang nyata</strong>.
-    </p>
-  </div>
-
-  <h3>14.3 — Dampak Kualitas Pakan terhadap Pertumbuhan Cacing</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Kualitas Media/Pakan</th><th>Growth Rate (mg/hari)</th><th>Conversion Efficiency</th><th>Catatan</th></tr></thead>
+  <section>
+    <h2>Biaya Operasional Bulanan (OPEX)</h2>
+    <p style="font-size:12px;color:var(--e500)">Asumsi full operation: 3 orang, 96 biopond, layering 10 biopond/hari × 34 kg = 340 kg mix/hari → sludge 170 kg/hari</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Item</th><th>Kalkulasi</th><th>Biaya/bulan</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Kotoran sapi murni (kontrol)</td>
-          <td>~15–20 mg/ekor/hari (ANC)</td>
-          <td>Tinggi (nutrisi lengkap)</td>
-          <td>Baseline terbaik, tapi mahal jika beli</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Sludge 50% + Kotoran sapi 40% + Sawdust 10%</strong></td>
-          <td><strong>~10–18 mg/ekor/hari (est.)</strong></td>
-          <td>Sedang–Tinggi (dengan pre-treatment)</td>
-          <td><strong>Formula target — tergantung kualitas sludge aktual</strong></td>
-        </tr>
-        <tr>
-          <td>Sludge murni 100% (tanpa campuran)</td>
-          <td>&lt;5 mg/ekor/hari (est.)</td>
-          <td>Rendah (nutrisi tidak seimbang, chemical stress)</td>
-          <td>⚠️ Tidak direkomendasikan</td>
-        </tr>
-        <tr>
-          <td>Pre-treated sludge (Trichoderma + EM4)</td>
-          <td><strong>+20–30% lebih tinggi dari non-pretreated</strong></td>
-          <td>Lebih tinggi (media lebih digestible)</td>
-          <td>✅ Dampak positif pre-treatment terbukti</td>
-        </tr>
-        <tr>
-          <td>Media dengan protein boost (tepung kedelai 5%)</td>
-          <td>+15–25% vs baseline</td>
-          <td>Lebih tinggi</td>
-          <td>Untuk akselerasi saat growth lambat</td>
-        </tr>
+        <tr><td><strong>SDM — 3 orang</strong></td><td>3 × Rp 140.000 × 26 hari kerja</td><td>Rp 10.920.000</td></tr>
+        <tr><td><strong>Kotoran sapi</strong></td><td>136 kg/hari × 30 × Rp 250/kg</td><td>Rp 1.020.000</td></tr>
+        <tr><td><strong>Sawdust / sekam</strong></td><td>34 kg/hari × 30 × Rp 500/kg</td><td>Rp 510.000</td></tr>
+        <tr><td><strong>EM4 pertanian</strong></td><td>3.4 L/hari × 30 × Rp 20.000/L</td><td>Rp 2.040.000</td></tr>
+        <tr><td><strong>Trichoderma harzianum</strong></td><td>3.4 kg/hari × 30 × Rp 15.000/kg</td><td>Rp 1.530.000</td></tr>
+        <tr><td><strong>Gula merah (aktivasi EM4)</strong></td><td>~5 kg/bulan × Rp 20.000</td><td>Rp 100.000</td></tr>
+        <tr><td><strong>Packaging &amp; label kascing</strong></td><td>Karung + label per bulan</td><td>Rp 500.000</td></tr>
+        <tr><td><strong>Listrik + air</strong></td><td>Misting, pompa, penerangan</td><td>Rp 400.000</td></tr>
+        <tr><td><strong>Misc consumables</strong></td><td>Sarung tangan, alat rusak, dll</td><td>Rp 300.000</td></tr>
+        <tr class="win-row"><td><strong>TOTAL OPEX / BULAN</strong></td><td></td><td><strong>Rp 17.320.000</strong></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+  </section>
 
-  <h3>14.4 — Siklus Hidup & Reproduksi (Timeline Lengkap)</h3>
-
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Hari 0–3</div>
-      <div class="tl-title">Introduksi Cacing → Adaptasi</div>
-      <div class="tl-body">Cacing burrowing, mengenali media. Belum banyak makan. Penting: jangan ganggu, biarkan adaptasi. Gut transit time pertama dalam 4.5–6 jam setelah makan pertama.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Hari 4–21</div>
-      <div class="tl-title">Active Feeding Phase</div>
-      <div class="tl-body">Cacing makan aktif, weight gain mulai terlihat. Pertumbuhan ANC: 28.8 mg/ekor/hari. Dalam 3 minggu: total +600 mg per ekor ANC (dari berat awal ~1g menjadi ~1.6g).</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 3–4</div>
-      <div class="tl-title">Clitellum Muncul (Dewasa Seksual)</div>
-      <div class="tl-body">Eisenia fetida: clitellum minggu ke-3. ANC: clitellum minggu ke-4. Tandanya: gelang pucat/terang di 1/3 bagian depan tubuh. Cacing siap reproduksi.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 4–8</div>
-      <div class="tl-title">Produksi Kokon</div>
-      <div class="tl-body">Kokon mulai diproduksi (ukuran 2-3mm, warna kuning-coklat-hijau). E. fetida: 21.8 kokon/ekor dalam periode ini. Inkubasi 18–35 hari tergantung suhu. Hatching success ~86%.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Minggu 6–10</div>
-      <div class="tl-title">Hatchling Muncul + Populasi Meningkat</div>
-      <div class="tl-body">Cacing baru keluar dari kokon (hatchling: sangat kecil, putih transparan). Hatchling memiliki gut transit lebih cepat dan cast production 3× lebih banyak dari berat tubuhnya. Populasi mulai meningkat signifikan.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <div class="tl-week">Bulan 2</div>
-      <div class="tl-title">Biomass Doubling (Pertama)</div>
-      <div class="tl-body">Teoritis: populasi + biomass 2× dari awal. Ini saat paling tepat untuk "split beds" — pindahkan 50% populasi ke tray/area baru dengan media fresh. Proses ini terus berulang setiap 2 bulan.</div>
-    </div>
-  </div>
-
-  <h3>14.5 — Harvest Decision Matrix</h3>
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Skenario</th><th>Kapan Jual Cacing</th><th>Strategi</th><th>Revenue Maksimum</th></tr></thead>
+  <section>
+    <h2>Proyeksi Revenue</h2>
+    <p style="font-size:12px;color:var(--e500)">Full operation: 340 kg mix/hari → kascing 45% konversi = 153 kg/hari → 4.590 kg/bulan. Cacing surplus ~367 kg/bulan.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Produk</th><th>Volume/bulan</th><th>Harga</th><th>Skenario</th><th>Revenue</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>Maximize Kascing</strong></td>
-          <td>Jual minimal cacing (hanya surplus)</td>
-          <td>Pertahankan populasi besar, throughput sludge maksimum</td>
-          <td>Kascing lebih banyak, kascing = nilai pupuk jangka panjang</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>⭐ Balance (Recommended)</strong></td>
-          <td>Jual 50% surplus saat split beds</td>
-          <td>Split beds tiap 2 bulan, jual 50% dari satu tray ke pengepul</td>
-          <td>Revenue cacing reguler + kascing terus tumbuh</td>
-        </tr>
-        <tr>
-          <td><strong>Maximize Cash Flow</strong></td>
-          <td>Jual 70–80% surplus agresif</td>
-          <td>Pertahankan breeding stock minimal, jual sebanyak mungkin</td>
-          <td>Revenue cacing tinggi, tapi growth kapasitas lambat</td>
-        </tr>
+        <tr><td rowspan="3"><strong>Kascing</strong></td><td rowspan="3">4.590 kg/bulan</td><td>Rp 1.500/kg</td><td>Curah petani</td><td>Rp 6.885.000</td></tr>
+        <tr><td>Rp 3.000/kg</td><td>Standard (bag 25kg)</td><td>Rp 13.770.000</td></tr>
+        <tr><td>Rp 5.000/kg</td><td>Premium retail (bag 5kg)</td><td>Rp 22.950.000</td></tr>
+        <tr><td rowspan="2"><strong>Cacing ANC</strong></td><td rowspan="2">367 kg/bulan</td><td>Rp 20.000/kg</td><td>Pengepul existing</td><td>Rp 7.340.000</td></tr>
+        <tr><td>Rp 35.000/kg</td><td>Langsung ke peternak ikan</td><td>Rp 12.845.000</td></tr>
+        <tr><td><strong>Leachate (opsional)</strong></td><td>~500 L/bulan</td><td>Rp 10.000/L</td><td>Pupuk cair organik</td><td>Rp 5.000.000</td></tr>
+        <tr><td><strong>Fee sludge (opsional)</strong></td><td>170 kg/hari × 30</td><td>Rp 100/kg</td><td>Jika Garudafood mau bayar</td><td>Rp 510.000</td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
 
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 15. UPDATED FORMULA & TIMELINE LENGKAP -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="master">
-    <div class="section-number">15</div>
-    <div>
-      <div class="section-title">Master Formula & Timeline Lengkap</div>
-      <div class="section-desc">Integrasi pre-treatment + vermicomposting + harvesting dalam satu siklus</div>
-    </div>
-  </div>
-
-  <div class="formula">
-    <span class="comment">═══════════════════════════════════════════════════════════════</span><br>
-    <span class="comment">  MASTER FORMULA — SLUDGE GARUDAFOOD VERMICOMPOSTING SYSTEM</span><br>
-    <span class="comment">  (per 100 kg batch, termasuk pre-treatment)</span><br>
-    <span class="comment">═══════════════════════════════════════════════════════════════</span><br>
-    <br>
-    <span class="comment"># BASE MATERIAL</span><br>
-    50 kg  Sludge WWTP (kadar air 75%)     <span class="comment"># Internal — FREE</span><br>
-    40 kg  Kotoran sapi (semi-composted)   <span class="comment"># ~Rp 10.000</span><br>
-    10 kg  Sawdust / sekam padi            <span class="comment"># ~Rp 5.000</span><br>
-    <br>
-    <span class="comment"># PRE-TREATMENT ACTIVATOR</span><br>
-    1 kg   Trichoderma harzianum (1%)      <span class="comment"># ~Rp 30.000–50.000</span><br>
-    1 L    EM4 aktif (10 ml/kg)            <span class="comment"># ~Rp 15.000–25.000</span><br>
-    100 g  Gula merah (aktivasi EM4)       <span class="comment"># ~Rp 2.000</span><br>
-    <br>
-    <span class="comment"># CACING (setelah pre-treatment selesai)</span><br>
-    500 g  Eudrilus eugeniae (ANC)         <span class="comment"># 0.5 kg / 100 kg media (5 kg/m²)</span><br>
-    <br>
-    <span class="comment">─────────────────────────────────────────────────────────────</span><br>
-    TOTAL BIAYA/BATCH                      <span class="comment"># ~Rp 62.000–87.000</span><br>
-    DURASI TOTAL                           <span class="comment"># 8–10 minggu (vs 12 tanpa pre-treatment)</span><br>
-    THROUGHPUT SLUDGE                      <span class="comment"># 0.5 kg ANC = proses 0.37–0.62 kg sludge mix/hari</span>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th colspan="5" style="text-align:center;background:#166534">⏱️ MASTER TIMELINE: 1 SIKLUS BATCH (10 Minggu)</th></tr>
-        <tr><th>Fase</th><th>Durasi</th><th>Aktivitas</th><th>Parameter Target</th><th>Output</th></tr>
-      </thead>
+    <div class="tbl"><table>
+      <thead><tr><th>Skenario Total Revenue</th><th>Kascing</th><th>Cacing</th><th>Total/bulan</th><th>Net Profit</th></tr></thead>
       <tbody>
-        <tr style="background:#fef3c7;">
-          <td><strong>Pre-Treatment</strong></td>
-          <td>14 hari</td>
-          <td>Mix material + inokulasi Trichoderma + EM4. Pre-composting (thermophilic → mesophilic)</td>
-          <td>Suhu: 45→30°C. pH: 6.5–7.5. Moisture: 65–70%</td>
-          <td>Media pre-digested siap cacing. Pathogen dieliminasi.</td>
-        </tr>
-        <tr>
-          <td><strong>Introduksi Cacing</strong></td>
-          <td>3–5 hari</td>
-          <td>Aklimatisasi 2 jam. Small batch test (20%). Full stocking (80%)</td>
-          <td>Cacing masuk sendiri ke media. Mortalitas &lt;10%</td>
-          <td>Cacing teradaptasi, mulai feeding</td>
-        </tr>
-        <tr>
-          <td><strong>Active Feeding</strong></td>
-          <td>4–5 minggu</td>
-          <td>Maintenance harian (moisture, suhu). Top feeding minggu ke-3</td>
-          <td>Growth: 28.8 mg/ekor/hari (ANC). Kokon mulai minggu ke-3</td>
-          <td>Biomass cacing +150–200%. Kokon mulai terlihat</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Maturation</strong></td>
-          <td>3–4 minggu</td>
-          <td>Stop tambah media di tray harvest. Siapkan tray baru (migration method)</td>
-          <td>Kascing hitam 70%+. Cacing migrasi ke tray baru</td>
-          <td>Kascing matang. Cacing transfer ke tray baru</td>
-        </tr>
-        <tr style="background:#dcfce7;">
-          <td><strong>Harvest</strong></td>
-          <td>1–2 hari</td>
-          <td>Angkat tray kascing. Sieve. Shade dry 1–2 minggu. Packaging</td>
-          <td>Moisture kascing &lt;40%. Warna hitam merata</td>
-          <td>✅ Kascing siap jual + cacing surplus</td>
-        </tr>
+        <tr><td><strong>Konservatif</strong> (curah + pengepul)</td><td>Rp 6.885.000</td><td>Rp 7.340.000</td><td>Rp 14.225.000</td><td style="color:#991b1b"><strong>− Rp 3.095.000</strong></td></tr>
+        <tr class="win-row"><td><strong>⭐ Standard</strong> (bag 25kg + pengepul)</td><td>Rp 13.770.000</td><td>Rp 7.340.000</td><td>Rp 21.110.000</td><td style="color:var(--g700)"><strong>+ Rp 3.790.000</strong></td></tr>
+        <tr><td><strong>Optimis</strong> (premium + langsung peternak)</td><td>Rp 22.950.000</td><td>Rp 12.845.000</td><td>Rp 35.795.000</td><td style="color:var(--g700)"><strong>+ Rp 18.475.000</strong></td></tr>
+        <tr><td><strong>Optimis + Leachate + Fee</strong></td><td>Rp 22.950.000</td><td>Rp 12.845.000</td><td>Rp 41.305.000</td><td style="color:var(--g700)"><strong>+ Rp 23.985.000</strong></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+    <div class="box box-amber"><strong>⚠️ Catatan Skenario Konservatif:</strong>
+    Jika kascing dijual curah Rp 1.500/kg, net masih rugi. Kunci profitabilitas ada di harga kascing minimal Rp 2.500–3.000/kg. Ini realistis dengan packaging basic (karung 25 kg, label InsTech) dan target petani lokal/toko pertanian, bukan hanya pedagang besar.</div>
+  </section>
 
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 16. KAPASITAS 96 BIOPOND GARUDAFOOD -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header page-break" id="biopond">
-    <div class="section-number">16</div>
-    <div>
-      <div class="section-title">Analisa 96 Biopond: Cukupkah untuk 800–1.500 kg Sludge?</div>
-      <div class="section-desc">Kalkulasi kapasitas, throughput, gap analysis & rekomendasi</div>
-    </div>
-  </div>
-
-  <!-- SPESIFIKASI -->
-  <h3>16.1 — Spesifikasi Biopond (Data Aktual)</h3>
-  <div class="card-grid">
-    <div class="kpi-card">
-      <div class="kpi-label">Jumlah Biopond</div>
-      <div class="kpi-value">96</div>
-      <div class="kpi-sub">Unit biopond maggot yang akan dialihfungsikan</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Ukuran per Biopond</div>
-      <div class="kpi-value" style="font-size:20px">170×90 cm</div>
-      <div class="kpi-sub">= 1.53 m² per biopond</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Total Luas Aktif</div>
-      <div class="kpi-value">146.88 m²</div>
-      <div class="kpi-sub">96 × 1.53 m²</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Kapasitas Media per Biopond</div>
-      <div class="kpi-value">~151 kg</div>
-      <div class="kpi-sub">Kedalaman 22 cm, bulk density 450 kg/m³</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Total Media (96 biopond)</div>
-      <div class="kpi-value">14.541 kg</div>
-      <div class="kpi-sub">Kapasitas sekali isi penuh</div>
-    </div>
-    <div class="kpi-card">
-      <div class="kpi-label">Sludge Murni per Batch</div>
-      <div class="kpi-value">7.271 kg</div>
-      <div class="kpi-sub">50% dari total media (formula aman)</div>
-    </div>
-  </div>
-
-  <!-- GAP ANALYSIS -->
-  <h3>16.2 — Gap Analysis: Target vs Kapasitas Biopond</h3>
-
-  <div class="highlight highlight-amber">
-    <strong>⚠️ Penting: Ada 2 cara menghitung "kapasitas serapan"</strong>
-    <br><strong>(A) Batch System:</strong> Biopond diisi penuh → proses 10 minggu → harvest → isi lagi. Throughput = 104 kg sludge/hari equivalent.
-    <br><strong>(B) Continuous Top-Feeding System:</strong> Cacing selalu ada, sludge mix ditambahkan layer tipis secara rutin setiap hari/minggu. Throughput = tergantung biomass cacing.
-    <br><br><strong>Untuk target 800–1.500 kg/hari → harus pakai sistem (B) Continuous.</strong>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Kondisi Operasional</th>
-          <th>Biomass Cacing</th>
-          <th>Sludge Terserap/hari</th>
-          <th>vs 800 kg Target</th>
-          <th>vs 1.500 kg Target</th>
-        </tr>
-      </thead>
+  <section>
+    <h2>P&amp;L per Fase Operasional</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Fase</th><th>Bulan</th><th>Tim</th><th>OPEX/bln</th><th>Revenue/bln</th><th>Net/bln</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Awal pilot (2.5 kg/m², feed 0.75)</td>
-          <td>367 kg</td>
-          <td>138 kg/hari</td>
-          <td><span class="status-bad">❌ 17%</span></td>
-          <td><span class="status-bad">❌ 9%</span></td>
-        </tr>
-        <tr>
-          <td>Bulan 4 (5 kg/m², feed 0.75)</td>
-          <td>734 kg</td>
-          <td>275 kg/hari</td>
-          <td><span class="status-bad">❌ 34%</span></td>
-          <td><span class="status-bad">❌ 18%</span></td>
-        </tr>
-        <tr>
-          <td>Bulan 8 (7.5 kg/m², feed 0.75)</td>
-          <td>1.102 kg</td>
-          <td>413 kg/hari</td>
-          <td><span class="status-warn">⚠️ 52%</span></td>
-          <td><span class="status-bad">❌ 28%</span></td>
-        </tr>
-        <tr>
-          <td>Optimal (10 kg/m², feed 0.75)</td>
-          <td>1.469 kg</td>
-          <td>551 kg/hari</td>
-          <td><span class="status-warn">⚠️ 69%</span></td>
-          <td><span class="status-bad">❌ 37%</span></td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Optimal (10 kg/m², feed 1.25) ⭐</strong></td>
-          <td><strong>1.469 kg</strong></td>
-          <td><strong>918 kg/hari</strong></td>
-          <td><span class="status-ok">✅ 115%</span></td>
-          <td><span class="status-warn">⚠️ 61%</span></td>
-        </tr>
-        <tr>
-          <td>Max (15 kg/m², feed 0.75)</td>
-          <td>2.203 kg</td>
-          <td>826 kg/hari</td>
-          <td><span class="status-ok">✅ 103%</span></td>
-          <td><span class="status-bad">❌ 55%</span></td>
-        </tr>
-        <tr style="background:#fef3c7;">
-          <td><strong>Max (15 kg/m², feed 1.25)</strong></td>
-          <td><strong>2.203 kg</strong></td>
-          <td><strong>1.377 kg/hari</strong></td>
-          <td><span class="status-ok">✅ 172%</span></td>
-          <td><span class="status-warn">⚠️ 92%</span></td>
-        </tr>
+        <tr><td><strong>Pilot</strong></td><td>1–3</td><td>2 org</td><td>~Rp 9.000.000</td><td>~Rp 1.000.000</td><td style="color:#991b1b">− Rp 8.000.000</td></tr>
+        <tr><td><strong>Scale-up</strong></td><td>4–9</td><td>2–3 org</td><td>~Rp 13.000.000</td><td>~Rp 7.000.000</td><td style="color:#991b1b">− Rp 6.000.000</td></tr>
+        <tr><td><strong>Ramp-up Full</strong></td><td>10–12</td><td>2–3 org</td><td>~Rp 15.000.000</td><td>~Rp 15.000.000</td><td style="color:var(--amber)">≈ Break Even</td></tr>
+        <tr class="win-row"><td><strong>Full Standard</strong></td><td>13+</td><td>2–3 org</td><td>Rp 17.320.000</td><td>Rp 21.110.000</td><td style="color:var(--g700)"><strong>+ Rp 3.790.000</strong></td></tr>
+        <tr class="win-row"><td><strong>Full Optimis</strong></td><td>13+</td><td>2–3 org</td><td>Rp 17.320.000</td><td>Rp 35.795.000</td><td style="color:var(--g700)"><strong>+ Rp 18.475.000</strong></td></tr>
       </tbody>
-    </table>
-  </div>
+    </table></div>
+    <div class="box box-blue"><strong>📈 Estimasi Akumulasi Kerugian Fase Ramp-up (12 bulan):</strong>
+    Pilot 3 bulan: −Rp 24 juta | Scale-up 6 bulan: −Rp 36 juta | Ramp-up 3 bulan: ≈ 0 | <strong>Total investasi efektif Year 1: ~Rp 71 juta</strong> (CAPEX + operational losses). Ini tergantung apakah Garudafood bayar service fee — jika iya, kerugian bisa dipotong signifikan.</div>
+  </section>
 
-  <!-- VERDICT -->
-  <h3>16.3 — Verdict: Cukup atau Tidak?</h3>
-
-  <div class="compare-grid">
-    <div class="compare-box compare-good">
-      <h4>✅ Target 800 kg/hari — CUKUP</h4>
-      <ul>
-        <li>✅ 96 biopond bisa serap <strong>918 kg/hari</strong> pada density optimal (10 kg/m²)</li>
-        <li>✅ Butuh hanya <strong>84 biopond</strong> untuk 800 kg → ada buffer 12 biopond</li>
-        <li>✅ Syarat: harus mencapai density cacing <strong>10 kg/m² dulu</strong> (butuh 6–12 bulan breeding)</li>
-        <li>✅ Saat full capacity, ada <strong>15% headroom</strong> (918 vs 800)</li>
-        <li>⚠️ Di awal (pilot), hanya bisa serap ~138–275 kg/hari — perlu ramp-up</li>
-      </ul>
+  <section>
+    <h2>Break-Even & ROI Summary</h2>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">CAPEX Total</div><div class="kpi-val" style="font-size:18px">Rp 11,6 jt</div><div class="kpi-sub">Modal awal one-time</div></div>
+      <div class="kpi"><div class="kpi-label">Break-Even CAPEX</div><div class="kpi-val" style="font-size:18px">3 bln</div><div class="kpi-sub">Setelah full operation tercapai</div></div>
+      <div class="kpi"><div class="kpi-label">Net Profit Skenario Std</div><div class="kpi-val" style="font-size:18px">Rp 3,8 jt</div><div class="kpi-sub">Per bulan full operation</div></div>
+      <div class="kpi"><div class="kpi-label">Net Profit Skenario Opt</div><div class="kpi-val" style="font-size:18px">Rp 18,5 jt</div><div class="kpi-sub">Per bulan (kascing premium)</div></div>
+      <div class="kpi"><div class="kpi-label">Hemat SDM vs Maggot</div><div class="kpi-val" style="font-size:18px">Rp 21 jt</div><div class="kpi-sub">Per bulan (6 org lebih sedikit)</div></div>
+      <div class="kpi"><div class="kpi-label">ROI Year 2 (annual)</div><div class="kpi-val" style="font-size:18px">~39%</div><div class="kpi-sub">Skenario standard</div></div>
     </div>
-    <div class="compare-box compare-bad">
-      <h4>❌ Target 1.500 kg/hari — TIDAK CUKUP</h4>
-      <ul>
-        <li>❌ Kondisi terbaik (15 kg/m², feed 1.25): hanya <strong>1.377 kg/hari</strong></li>
-        <li>❌ Untuk 1.500 kg/hari butuh <strong>157 biopond</strong> (kurang 61 unit)</li>
-        <li>❌ Atau butuh area <strong>240 m²</strong> (saat ini 146.88 m²)</li>
-        <li>⚠️ Gap sebesar <strong>8%</strong> di kondisi paling optimal (~1.377 vs 1.500)</li>
-        <li>💡 Bisa di-cover dengan naikkan sludge ratio ke 55–60% (jika pre-treatment sukses)</li>
-      </ul>
+
+    <h3>Visualisasi Revenue vs Cost</h3>
+    <div class="bar-wrap">
+      <div class="bar-row"><div class="bar-label">OPEX/bulan</div><div class="bar-track"><div class="bar-fill" style="width:57%;background:#ef4444">Rp 17,3 juta</div></div><div class="bar-val">Rp 17,3 jt</div></div>
+      <div class="bar-row"><div class="bar-label">Rev. Konservatif</div><div class="bar-track"><div class="bar-fill" style="width:47%;background:#a8a29e">Rp 14,2 juta</div></div><div class="bar-val">Rp 14,2 jt</div></div>
+      <div class="bar-row"><div class="bar-label">Rev. Standard ⭐</div><div class="bar-track"><div class="bar-fill" style="width:70%;background:var(--g600)">Rp 21,1 juta</div></div><div class="bar-val">Rp 21,1 jt</div></div>
+      <div class="bar-row"><div class="bar-label">Rev. Optimis</div><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--g700)">Rp 35,8 juta</div></div><div class="bar-val">Rp 35,8 jt</div></div>
     </div>
-  </div>
 
-  <!-- SOLUSI GAP 1500 KG -->
-  <div class="card card-blue">
-    <h4 style="margin-top:0">💡 Opsi Solusi untuk Gap 1.500 kg/hari</h4>
-    <div class="table-wrap" style="margin:8px 0 0">
-      <table>
-        <thead><tr><th>Opsi</th><th>Cara</th><th>Investasi Tambahan</th><th>Feasibilitas</th></tr></thead>
-        <tbody>
-          <tr>
-            <td><strong>A. Tambah 61 Biopond</strong></td>
-            <td>Buat biopond baru 170×90 cm sebanyak 61 unit</td>
-            <td>~Rp 6–15 juta (material biopond)</td>
-            <td><span class="status-ok">✅ Paling clean</span></td>
-          </tr>
-          <tr style="background:#f0fdf4;">
-            <td><strong>B. Naikkan Sludge Ratio ke 60%</strong></td>
-            <td>Dari 50% → 60% sludge dalam mix (pre-treatment harus sukses dulu)</td>
-            <td>Rp 0 (optimasi formula)</td>
-            <td><span class="status-ok">✅ Coba dulu setelah pilot</span></td>
-          </tr>
-          <tr>
-            <td><strong>C. Tambah Kedalaman Media</strong></td>
-            <td>Naikkan dari 22 cm → 30 cm per biopond (+36% kapasitas)</td>
-            <td>Rp 0 (operasional)</td>
-            <td><span class="status-warn">⚠️ Cek dulu struktur biopond</span></td>
-          </tr>
-          <tr>
-            <td><strong>D. Hybrid: B + C</strong></td>
-            <td>60% sludge + 25 cm kedalaman → ~1.450–1.500 kg/hari</td>
-            <td>Rp 0</td>
-            <td><span class="status-warn">⚠️ Setelah pilot terbukti</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="box box-green" style="margin-top:20px">
+      <strong>🎯 Rekomendasi Strategi Harga Kascing:</strong>
+      Jangan jual curah dulu. Investasi di packaging sederhana (karung plastik 5 kg + label InsTech, biaya Rp 3.000–5.000/karung) dan langsung jual ke toko pertanian, komunitas petani, atau marketplace (Tokopedia) di harga Rp 4.000–5.000/kg.
+      Dengan volume 4.590 kg/bulan, bahkan 50% saja yang terjual retail sudah boost revenue Rp 4–6 juta/bulan tambahan vs jual curah semua.
     </div>
-    <p style="margin:10px 0 0;font-size:12px;color:var(--earth-600)">
-      <strong>Rekomendasi:</strong> Start dulu dengan 800 kg/hari target menggunakan 96 biopond. Setelah cacing adapt dan pre-treatment terbukti, coba naik sludge ratio ke 55–60% untuk mendekati 1.500 kg/hari tanpa investasi tambahan.
-    </p>
-  </div>
+  </section>
 
-  <!-- RAMP UP TIMELINE -->
-  <h3>16.4 — Ramp-Up Timeline: Dari Pilot ke Full Capacity</h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Periode</th>
-          <th>Biopond Aktif</th>
-          <th>Biomass Cacing</th>
-          <th>Sludge Terserap/hari</th>
-          <th>% dari Target 800 kg</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Bulan 1–3 (Pilot)</strong></td><td>20–30</td><td>~3–8 kg</td><td>~10–25 kg/hari</td><td>1–3%</td></tr>
-        <tr><td><strong>Bulan 4–6 (Scale-up)</strong></td><td>50–70</td><td>~30–80 kg</td><td>~90–200 kg/hari</td><td>11–25%</td></tr>
-        <tr><td><strong>Bulan 7–9 (Expanding)</strong></td><td>96</td><td>~200–500 kg</td><td>~400–700 kg/hari</td><td>50–88%</td></tr>
-        <tr style="background:#f0fdf4;"><td><strong>Bulan 10–12 (Full)</strong></td><td>96</td><td>~800–1.470 kg</td><td>~700–918 kg/hari</td><td><strong>88–115%</strong></td></tr>
-        <tr style="background:#052e16;color:white;"><td><strong>Bulan 13–18 (Optimal)</strong></td><td>96 + ekspansi</td><td>1.470–2.200 kg</td><td>918–1.377 kg/hari</td><td><strong>115–172%</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="highlight highlight-amber">
-    <strong>⚠️ Kenyataan Penting: Fase Transisi 6–12 Bulan</strong>
-    Di 6–12 bulan pertama, kapasitas serapan JAUH di bawah 800 kg/hari. Selama fase ini, sludge Garudafood yang tidak terserap harus tetap diolah dengan metode lain (atau disimpan sementara di area pre-treatment). Pastikan ada plan interim: misalnya tetap pakai BSF untuk sebagian sludge selama cacing belum penuh, atau negosiasi dengan Garudafood untuk penerimaan bertahap.
-  </div>
-
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 17. MANAJEMEN TIM -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="tim">
-    <div class="section-number">17</div>
-    <div>
-      <div class="section-title">Manajemen Tim & Struktur Operasional</div>
-      <div class="section-desc">Berapa orang, tugas apa, dan berapa biaya per fase</div>
-    </div>
-  </div>
-
-  <h3>17.1 — Workload Analysis (96 Biopond Full Operation)</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Aktivitas</th><th>Detail</th><th>Durasi/hari</th><th>PIC</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>🔍 Morning Inspection</strong></td>
-          <td>Cek 96 biopond: moisture, suhu, odor, aktivitas cacing</td>
-          <td>288 menit (4.8 jam)</td>
-          <td>2 operator</td>
-        </tr>
-        <tr>
-          <td><strong>💧 Penyiraman</strong></td>
-          <td>~35 biopond yang perlu disiram, spray merata</td>
-          <td>175 menit (2.9 jam)</td>
-          <td>1 operator</td>
-        </tr>
-        <tr>
-          <td><strong>🧪 Pre-Treatment Mixing</strong></td>
-          <td>Mix sludge + kotoran sapi + sawdust + Trichoderma + EM4 untuk batch berikutnya</td>
-          <td>150 menit (2.5 jam)</td>
-          <td>1–2 operator</td>
-        </tr>
-        <tr>
-          <td><strong>🍽️ Top Feeding</strong></td>
-          <td>Tambah layer media ke ~12 biopond/hari (rotating schedule)</td>
-          <td>180 menit (3 jam)</td>
-          <td>1–2 operator</td>
-        </tr>
-        <tr>
-          <td><strong>🚛 Transport Material</strong></td>
-          <td>Angkut sludge dari WWTP, kotoran sapi, sawdust ke area pre-treatment</td>
-          <td>90 menit (1.5 jam)</td>
-          <td>1 operator</td>
-        </tr>
-        <tr>
-          <td><strong>🌿 Harvesting</strong></td>
-          <td>Panen kascing dari 1–2 biopond/hari (rotating), sieving, curing</td>
-          <td>68 menit (1.1 jam)</td>
-          <td>1 operator</td>
-        </tr>
-        <tr>
-          <td><strong>📋 Recording & Admin</strong></td>
-          <td>Logbook harian, monitoring data, foto dokumentasi</td>
-          <td>30 menit</td>
-          <td>Supervisor</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>TOTAL</strong></td>
-          <td></td>
-          <td><strong>981 menit = 16.4 jam</strong></td>
-          <td>3 orang (@ 7 jam efektif)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="card card-green">
-    <h4 style="margin-top:0">🧮 Kalkulasi Kebutuhan Orang</h4>
-    <div class="formula" style="margin:8px 0 0;padding:14px">
-      Total workload  = 981 menit / 60 = 16.35 jam/hari<br>
-      Jam kerja efektif / orang = 7 jam/hari (8 jam − 1 jam istirahat)<br>
-      Orang dibutuhkan = 16.35 / 7 = <strong>2.34 → MINIMAL 3 ORANG</strong><br>
-      <span class="comment"># +1 buffer untuk sakit/izin → ideal 4 orang di full operation</span>
-    </div>
-  </div>
-
-  <h3>17.2 — Struktur Tim & Pembagian Tugas</h3>
-
-  <div class="card-grid">
-    <div class="kpi-card" style="border-top:4px solid var(--green-700)">
-      <div class="kpi-label">Posisi 1</div>
-      <div class="kpi-value" style="font-size:16px">Supervisor / Mandor</div>
-      <div class="kpi-sub">
-        • Morning round inspection (lead)<br>
-        • Recording &amp; logbook harian<br>
-        • QC kascing &amp; cacing<br>
-        • Koordinasi dengan Garudafood<br>
-        • Troubleshooting masalah<br>
-        • <strong>Rp 140.000/hari</strong>
-      </div>
-    </div>
-    <div class="kpi-card" style="border-top:4px solid var(--green-600)">
-      <div class="kpi-label">Posisi 2</div>
-      <div class="kpi-value" style="font-size:16px">Operator A — Feeding</div>
-      <div class="kpi-sub">
-        • Pre-treatment mixing harian<br>
-        • Top feeding (rotating biopond)<br>
-        • Aplikasi Trichoderma + EM4<br>
-        • Material transport<br>
-        • <strong>Rp 140.000/hari</strong>
-      </div>
-    </div>
-    <div class="kpi-card" style="border-top:4px solid var(--green-500)">
-      <div class="kpi-label">Posisi 3</div>
-      <div class="kpi-value" style="font-size:16px">Operator B — Maintenance</div>
-      <div class="kpi-sub">
-        • Penyiraman 96 biopond<br>
-        • Morning inspection (pair dengan supervisor)<br>
-        • Monitoring moisture &amp; suhu<br>
-        • Kebersihan area<br>
-        • <strong>Rp 140.000/hari</strong>
-      </div>
-    </div>
-    <div class="kpi-card" style="border-top:4px solid #a8a29e">
-      <div class="kpi-label">Posisi 4 (Full Op Only)</div>
-      <div class="kpi-value" style="font-size:16px">Operator C — Harvest</div>
-      <div class="kpi-sub">
-        • Harvesting kascing harian<br>
-        • Sieving &amp; drying<br>
-        • Packaging kascing<br>
-        • Penanganan cacing jual<br>
-        • <strong>Rp 140.000/hari</strong>
-      </div>
-    </div>
-  </div>
-
-  <h3>17.3 — Biaya SDM per Fase Operasional</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Fase</th>
-          <th>Biopond Aktif</th>
-          <th>Tim</th>
-          <th>Biaya/hari</th>
-          <th>Biaya/bulan (26 hari)</th>
-          <th>Biaya/tahun</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Pilot (Bulan 1–3)</strong></td>
-          <td>20–30 biopond</td>
-          <td>2 orang (Supervisor + Op. A)</td>
-          <td>Rp 280.000</td>
-          <td><strong>Rp 7.280.000</strong></td>
-          <td>Rp 21.840.000</td>
-        </tr>
-        <tr>
-          <td><strong>Scale-Up (Bulan 4–9)</strong></td>
-          <td>50–70 biopond</td>
-          <td>3 orang (+ Op. B)</td>
-          <td>Rp 420.000</td>
-          <td><strong>Rp 10.920.000</strong></td>
-          <td>Rp 65.520.000</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Full Operation (Bulan 10+)</strong></td>
-          <td>96 biopond</td>
-          <td>4 orang (+ Op. C)</td>
-          <td>Rp 560.000</td>
-          <td><strong>Rp 14.560.000</strong></td>
-          <td>Rp 174.720.000</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>17.4 — Weekly Schedule Template (Full Operation, 4 Orang)</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Hari</th><th>Supervisor</th><th>Operator A (Feeding)</th><th>Operator B (Maintenance)</th><th>Operator C (Harvest)</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Senin</strong></td><td>Inspection + Recording</td><td>Pre-treatment batch baru</td><td>Penyiraman + monitoring 1–48</td><td>Harvest biopond 1–2 + sieving</td></tr>
-        <tr><td><strong>Selasa</strong></td><td>Inspection + QC kascing</td><td>Top feeding biopond 1–12</td><td>Penyiraman + monitoring 49–96</td><td>Shade drying + packaging</td></tr>
-        <tr><td><strong>Rabu</strong></td><td>Inspection + Recording</td><td>Pre-treatment aduk batch (hari ke-4)</td><td>Penyiraman full round</td><td>Harvest biopond 3–4</td></tr>
-        <tr><td><strong>Kamis</strong></td><td>Inspection + material order</td><td>Top feeding biopond 13–24</td><td>Monitoring + aerasi ringan</td><td>Packaging + persiapan jual cacing</td></tr>
-        <tr><td><strong>Jumat</strong></td><td>Weekly report + foto dokumentasi</td><td>Pindah material ke biopond kosong</td><td>Penyiraman + cek pH all biopond</td><td>Harvest biopond 5–6</td></tr>
-        <tr><td><strong>Sabtu</strong></td><td>Inspection + troubleshooting</td><td>Pre-treatment batch baru</td><td>General cleaning area</td><td>Shade drying + packaging</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3>17.5 — Efisiensi: Tools yang Bisa Kurangi Kebutuhan Orang</h3>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Tool / Alat</th><th>Aktivitas yang Dibantu</th><th>Efisiensi</th><th>Harga (est.)</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>Selang spray / misting system</strong></td>
-          <td>Penyiraman 96 biopond</td>
-          <td>−70% waktu → hemat 2 jam/hari</td>
-          <td>Rp 1–5 juta</td>
-        </tr>
-        <tr>
-          <td><strong>Concrete mixer / molen kecil</strong></td>
-          <td>Pre-treatment mixing 800+ kg/hari</td>
-          <td>Manual 2 orang → 1 orang (efisiensi 60%)</td>
-          <td>Rp 3–8 juta</td>
-        </tr>
-        <tr>
-          <td><strong>Gerobak sorong / hand truck</strong></td>
-          <td>Transport material &amp; kascing</td>
-          <td>−50% waktu transport</td>
-          <td>Rp 300–800 ribu</td>
-        </tr>
-        <tr>
-          <td><strong>Ayakan/screener manual</strong></td>
-          <td>Sieving kascing saat harvest</td>
-          <td>−40% waktu harvest</td>
-          <td>Rp 200–500 ribu</td>
-        </tr>
-        <tr style="background:#f0fdf4;">
-          <td><strong>Total investasi tools</strong></td>
-          <td></td>
-          <td><strong>Potensial kurangi 1 orang operator</strong></td>
-          <td><strong>Rp 4.5–13.5 juta</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="highlight highlight-green">
-    <strong>💡 Jika Pakai Misting System + Molen Kecil:</strong>
-    Workload turun dari 16.4 jam/hari → ~11 jam/hari → cukup 2–3 orang untuk 96 biopond di full operation.
-    Investasi tools ~Rp 5–10 juta balik modal dalam 2 bulan dari penghematan gaji (Rp 140.000/hari × 26 hari = Rp 3.640.000/bulan per orang).
-  </div>
-
-  <hr class="divider">
-
-  <!-- ─────────────────────────────────────────── -->
-  <!-- 18. SUMMARY REKOMENDASI -->
-  <!-- ─────────────────────────────────────────── -->
-  <div class="section-header" id="summary18">
-    <div class="section-number">18</div>
-    <div>
-      <div class="section-title">Summary Rekomendasi Final</div>
-      <div class="section-desc">Action items konkret berdasarkan semua analisa</div>
-    </div>
-  </div>
-
-  <div class="table-wrap">
-    <table>
-      <thead><tr><th>Aspek</th><th>Kondisi Saat Ini</th><th>Target</th><th>Rekomendasi</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>Kapasitas 800 kg/hari</strong></td>
-          <td>96 biopond = 146.88 m²</td>
-          <td>84 biopond dibutuhkan</td>
-          <td><span class="status-ok">✅ CUKUP</span> — ada buffer 12 biopond</td>
-        </tr>
-        <tr>
-          <td><strong>Kapasitas 1.500 kg/hari</strong></td>
-          <td>Maks 1.377 kg/hari (96 biopond)</td>
-          <td>157 biopond dibutuhkan</td>
-          <td><span class="status-warn">⚠️ KURANG</span> — optimasi formula dulu sebelum tambah biopond</td>
-        </tr>
-        <tr>
-          <td><strong>Waktu mencapai 800 kg/hari</strong></td>
-          <td>Hari 1: ~10 kg/hari</td>
-          <td>Full capacity 10–12 bulan</td>
-          <td>Beli bibit massal (bukan hanya 3 kg) untuk percepat ramp-up</td>
-        </tr>
-        <tr>
-          <td><strong>Tenaga Kerja (Full Op)</strong></td>
-          <td>—</td>
-          <td>3–4 orang</td>
-          <td>Start 2 orang (pilot) → 3 (scale-up) → 4 (full)</td>
-        </tr>
-        <tr>
-          <td><strong>Biaya SDM/bulan (Full)</strong></td>
-          <td>—</td>
-          <td>Seefisien mungkin</td>
-          <td>Rp 14.56 juta (4 org) atau Rp 10.92 juta (3 org + tools otomasi)</td>
-        </tr>
-        <tr>
-          <td><strong>Pre-Treatment</strong></td>
-          <td>Belum ada</td>
-          <td>Wajib untuk sludge chemical</td>
-          <td>Trichoderma harzianum + EM4 setiap batch (Rp 62.000–87.000/100 kg)</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <hr class="divider">
-  <h3>📚 Referensi Ilmiah Utama</h3>
-  <div class="card" style="font-size:12px;line-height:1.8;color:var(--earth-600)">
-    <p>1. Vermicomposting Technology to Reduce Potentially Toxic Elements in Sewage Sludge — Agronomy, 2022 (DOI: 10.3390/agronomy12092049)</p>
-    <p>2. Pilot-Scale Vermicomposting of Dewatered Sewage Sludge from Medium-Sized WWTP — Detritus Journal, 2021</p>
-    <p>3. Eisenia fetida for Sewage Sludge Management — Environment, Development and Sustainability, Springer 2024</p>
-    <p>4. Vermicomposting of Sewage Sludge at Various C/N Ratios — ScienceDirect, 2023 (Dume et al.)</p>
-    <p>5. Eudrilus eugeniae vs Eisenia fetida vermiremoval of Cd &amp; Cr from Sewage Sludge — IJDDT, 2025</p>
-    <p>6. Potential of Sewage Sludge as Organic Fertilizers Through Vermicomposting — JBT, UIN Bandung 2022</p>
-    <p>7. Vermicomposting of Paper Mill Sludge with Cowdung using Eisenia fetida — Academia.edu</p>
-    <p>8. Trichoderma harzianum, Eisenia fetida and Cow Dung for Paddy Straw Composting — Fermentation MDPI, 2023</p>
-    <p>9. Effect of EM4 Addition on Vermicomposting Fish Waste — Presipitasi Journal, UNDIP, 2023</p>
-    <p>10. Influence of Trichoderma viridae in Vermicomposting (Ndegwa et al.) — Bioresource Technology 2023</p>
-    <p>11. Effects of Stocking Density and Feeding Rate on Vermicomposting of Biosolids — Ndegwa et al., Bioresource Technology 2000</p>
-    <p>12. Biomass and Vermicompost Production by Eudrilus eugeniae — Revista de Biologia Tropical, Caroline C. et al.</p>
-    <p>13. Rubber Leaf Litter as Vermiculture Substrate for E. eugeniae and E. fetida — ScienceDirect 2004 (weight gain 28.8 vs 6.2 mg/worm/day)</p>
-    <p>14. Life Cycle of E. fetida and E. eugeniae — Biomedical Research, 2018 (max weight ANC: 1116 mg/worm)</p>
-    <p style="margin:0">15. Manual of On-Farm Vermicomposting — OAAC/EAWAG (stocking density 2.5–10 kg/m², doubling every 60 days)</p>
-  </div>
-
-</div><!-- /container -->
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <strong>PT Instech Solusi Nusantara</strong><br>
-  Divisi Pengolahan Limbah &amp; Budidaya &nbsp;|&nbsp; Dokumen Riset Internal &nbsp;|&nbsp; September 2026<br>
-  <small style="opacity:0.5">Disusun berdasarkan 15+ peer-reviewed scientific publications. Untuk keputusan komersial, validasi dengan pilot test aktual.</small>
+  <strong>PT Instech Solusi Nusantara</strong> · Divisi Pengolahan Limbah Organik · September 2026<br>
+  <small>Berdasarkan 15+ peer-reviewed publications. Validasi dengan pilot test aktual sebelum keputusan komersial penuh.</small>
 </footer>
 
 <!-- PRINT BUTTON -->
-<button class="print-btn no-print" onclick="window.print()">
-  🖨️ Save as PDF
-</button>
+<button class="print-btn no-print" onclick="window.print()">🖨️ Save as PDF</button>
+
+<script>
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.tabs-nav').offsetTop - 2, behavior:'smooth'});
+}
+</script>
 
 </body>
 </html>
