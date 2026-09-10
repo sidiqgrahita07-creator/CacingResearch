@@ -19,6 +19,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.instech.cacingresearch.data.DataManager
 import com.instech.cacingresearch.data.Pengamatan
+import com.instech.cacingresearch.data.SheetsSync
+import kotlinx.coroutines.launch
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,10 +28,14 @@ import java.io.File
 fun MainScreen() {
     val context = LocalContext.current
     val dataManager = remember { DataManager(context) }
+    val sheetsSync = remember { SheetsSync() }
+    val scope = rememberCoroutineScope()
     
     var selectedTab by remember { mutableStateOf(0) }
     var showAddDialog by remember { mutableStateOf(false) }
     var pengamatanList by remember { mutableStateOf(dataManager.getAllPengamatan()) }
+    var syncStatus by remember { mutableStateOf("") }
+    var showSyncSnackbar by remember { mutableStateOf(false) }
     
     Scaffold(
         topBar = {
@@ -84,11 +90,31 @@ fun MainScreen() {
         AddPengamatanDialog(
             onDismiss = { showAddDialog = false },
             onSave = { pengamatan ->
+                // Save locally first
                 dataManager.savePengamatan(pengamatan)
                 pengamatanList = dataManager.getAllPengamatan()
                 showAddDialog = false
+                
+                // Sync to Sheets in background
+                scope.launch {
+                    val result = sheetsSync.syncPengamatan(pengamatan)
+                    syncStatus = if (result.isSuccess) {
+                        "✓ Data tersimpan di Google Sheets"
+                    } else {
+                        "⚠ Tersimpan lokal (sync gagal: ${result.exceptionOrNull()?.message})"
+                    }
+                    showSyncSnackbar = true
+                }
             }
         )
+    }
+    
+    // Snackbar untuk status sync
+    if (showSyncSnackbar) {
+        LaunchedEffect(Unit) {
+            kotlinx.coroutines.delay(3000)
+            showSyncSnackbar = false
+        }
     }
 }
 
